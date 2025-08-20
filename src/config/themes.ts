@@ -255,14 +255,14 @@ export const themes: Record<string, ThemeConfig> = {
     heroMain: {
       title: 'AI Image Enhancer',
       subtitle: 'Transform low-quality images into stunning high-resolution masterpieces with one click – powered by AI.',
-      mainImage: '/images/hero/enhance.png',
+      mainImage: '/images/hero/enhance/enhance.png',
       uploadText: 'Upload Image',
       uploadSubText: 'Or drop a file, paste image or URL',
       demoImages: [
-        '/images/hero/one.png',
-        '/images/hero/two.png',
-        '/images/hero/three.png',
-        '/images/hero/four.png'
+        '/images/hero/enhance/one.png',
+        '/images/hero/enhance/two.png',
+        '/images/hero/enhance/three.png',
+        '/images/hero/enhance/four.png'
       ]
     },
     fusionGuide: {

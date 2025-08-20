@@ -57,7 +57,7 @@ export default function HeroMain() {
             <p className="upload-demo-text">{heroMain.uploadSubText}</p>
             <button className="upload-tips-btn">
               <Image
-                src="/images/hero/light.png"
+                src="/images/hero/enhance/light.png"
                 alt="Tips icon"
                 width={16}
                 height={16}

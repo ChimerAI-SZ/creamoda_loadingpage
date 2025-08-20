@@ -2,11 +2,33 @@
 
 import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function OfferMore() {
+  const router = useRouter();
   const cardsContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+
+  // 卡片标题到路由的映射
+  const cardRouteMapping: Record<string, string> = {
+    'Image Background Remover': 'image-background-remover',
+    'Image Background Changer': 'image-background-changer',
+    'Image Enhancer': 'image-enhancer',
+    'AI Image Changer': 'image-changer',
+    'Image Color Changer': 'image-color-changer',
+    'AI Virtual Try-On': 'virtual-try-on',
+    'AI Outfit Generator': 'outfit-generator',
+    'AI Sketch to Image Converter': 'sketch-to-image'
+  };
+
+  // 处理卡片点击事件
+  const handleCardClick = (cardTitle: string) => {
+    const route = cardRouteMapping[cardTitle];
+    if (route) {
+      router.push(`/${route}`);
+    }
+  };
 
   const checkScrollPosition = () => {
     if (cardsContainerRef.current) {
@@ -67,7 +89,7 @@ export default function OfferMore() {
         </div>
       </div>
       <div className="offer-more-cards" ref={cardsContainerRef}>
-        <div className="offer-card">
+        <div className="offer-card" onClick={() => handleCardClick('Image Background Remover')} style={{ cursor: 'pointer' }}>
           <div className="offer-card-image">
             <Image
               src="/images/card/remove_bg.png"
@@ -82,7 +104,7 @@ export default function OfferMore() {
             <p className="offer-card-desc">Instantly cut out subjects and get a clean, transparent PNG in seconds.</p>
           </div>
         </div>
-        <div className="offer-card">
+        <div className="offer-card" onClick={() => handleCardClick('Image Background Changer')} style={{ cursor: 'pointer' }}>
           <div className="offer-card-image">
             <Image
               src="/images/card/change_bg.png"
@@ -97,7 +119,7 @@ export default function OfferMore() {
             <p className="offer-card-desc">Replace any background with custom colors, images, or scenes.</p>
           </div>
         </div>
-        <div className="offer-card">
+        <div className="offer-card" onClick={() => handleCardClick('Image Enhancer')} style={{ cursor: 'pointer' }}>
           <div className="offer-card-image">
             <Image
               src="/images/card/upscale.png"
@@ -112,7 +134,7 @@ export default function OfferMore() {
             <p className="offer-card-desc">Boost image resolution up to 2× without losing sharpness or detail.</p>
           </div>
         </div>
-        <div className="offer-card">
+        <div className="offer-card" onClick={() => handleCardClick('AI Image Changer')} style={{ cursor: 'pointer' }}>
           <div className="offer-card-image">
             <Image
               src="/images/card/partial_mod.png"
@@ -127,7 +149,7 @@ export default function OfferMore() {
             <p className="offer-card-desc">Edit or replace only the areas you select, keeping the rest untouched.</p>
           </div>
         </div>
-        <div className="offer-card">
+        <div className="offer-card" onClick={() => handleCardClick('Image Color Changer')} style={{ cursor: 'pointer' }}>
           <div className="offer-card-image">
             <Image
               src="/images/card/change_color.png"
@@ -142,7 +164,7 @@ export default function OfferMore() {
             <p className="offer-card-desc">Instantly swap product or object colors with realistic results.</p>
           </div>
         </div>
-        <div className="offer-card">
+        <div className="offer-card" onClick={() => handleCardClick('AI Virtual Try-On')} style={{ cursor: 'pointer' }}>
           <div className="offer-card-image">
             <Image
               src="/images/card/virtual_try.png"
@@ -157,7 +179,7 @@ export default function OfferMore() {
             <p className="offer-card-desc">Generate lifelike model images wearing your products, cutting shoot costs and boosting sales.</p>
           </div>
         </div>
-        <div className="offer-card">
+        <div className="offer-card" onClick={() => handleCardClick('AI Outfit Generator')} style={{ cursor: 'pointer' }}>
           <div className="offer-card-image">
             <Image
               src="/images/card/design.png"
@@ -172,7 +194,7 @@ export default function OfferMore() {
             <p className="offer-card-desc">Generate and customize fashion outfits — swap fabrics, tweak styles, redesign patterns, all in one tool.</p>
           </div>
         </div>
-        <div className="offer-card">
+        <div className="offer-card" onClick={() => handleCardClick('AI Sketch to Image Converter')} style={{ cursor: 'pointer' }}>
           <div className="offer-card-image">
             <Image
               src="/images/card/sketch_design.png"

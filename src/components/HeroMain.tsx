@@ -2,6 +2,23 @@ import Image from 'next/image';
 import { useTheme } from '../context/ThemeContext';
 import { useCallback } from 'react';
 
+// 主题ID到SaaS页面和功能类型的映射
+const themeToSaasConfigMap: Record<string, { page: string; variationType?: string; tab?: string }> = {
+  // Magic Kit 相关功能
+  'background_remove': { page: 'magic-kit', variationType: '3' },    // Remove Background
+  'background_change': { page: 'magic-kit', variationType: '2' },    // Change Background
+  'image_enhance': { page: 'magic-kit', variationType: '5' },        // Upscale
+  'color_change': { page: 'magic-kit', variationType: '1' },         // Change Color
+  'partial_modify': { page: 'magic-kit', variationType: '4' },       // Partial Modification
+  
+  // Virtual Try-On 相关功能
+  'virtual_try': { page: 'virtual-try-on' },                        // Virtual Try-On
+  
+  // 首页 Image to Image 相关功能
+  'outfit_generator': { page: '', variationType: '11', tab: 'image-to-image' },  // Vary style (首页)
+  'sketch_convert': { page: '', variationType: '4', tab: 'image-to-image' },     // Sketch to Design (首页)
+};
+
 export default function HeroMain() {
   const { currentTheme } = useTheme();
   const { heroMain } = currentTheme;
@@ -15,13 +32,38 @@ export default function HeroMain() {
     // 将完整图片URL编码后传递给SaaS系统
     const encodedImageSrc = encodeURIComponent(fullImageUrl);
     
+    // 根据当前主题获取对应的SaaS页面配置
+    const saasConfig = themeToSaasConfigMap[currentTheme.id] || { page: 'magic-kit', variationType: '3' };
+    
     // 构建SaaS系统的URL - 使用环境变量或默认localhost
     const saasBaseUrl = process.env.NEXT_PUBLIC_SAAS_URL || 'http://localhost:3000';
-    const saasUrl = `${saasBaseUrl}/magic-kit?imageUrl=${encodedImageSrc}&variationType=3`;
+    
+    // 根据页面类型构建不同的URL
+    let saasUrl: string;
+    const params = new URLSearchParams();
+    params.set('imageUrl', encodedImageSrc);
+    
+    if (saasConfig.variationType) {
+      params.set('variationType', saasConfig.variationType);
+    }
+    
+    if (saasConfig.tab) {
+      params.set('tab', saasConfig.tab);
+    }
+    
+    // 构建最终URL
+    if (saasConfig.page) {
+      saasUrl = `${saasBaseUrl}/${saasConfig.page}?${params.toString()}`;
+    } else {
+      // 首页
+      saasUrl = `${saasBaseUrl}/?${params.toString()}`;
+    }
+    
+    console.log('Jumping to SaaS with theme:', currentTheme.id, 'page:', saasConfig.page, 'variationType:', saasConfig.variationType);
     
     // 在新窗口中打开SaaS系统
     window.open(saasUrl, '_blank');
-  }, []);
+  }, [currentTheme.id]);
 
   return (
     <div className="hero-main">

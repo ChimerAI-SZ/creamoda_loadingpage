@@ -23,6 +23,26 @@ export default function HeroMain() {
   const { currentTheme } = useTheme();
   const { heroMain } = currentTheme;
 
+  // 根据当前域名确定SaaS环境
+  const getSaasBaseUrl = useCallback(() => {
+    const currentHost = window.location.hostname;
+    
+    // 根据当前域名判断环境
+    if (currentHost === 'localhost' || currentHost === '127.0.0.1') {
+      // 本地开发环境
+      return 'http://localhost:3000';
+    } else if (currentHost.includes('test-mvp.creamoda.ai')) {
+      // 测试环境
+      return 'https://test-mvp.creamoda.ai';
+    } else if (currentHost.includes('create.creamoda.ai')) {
+      // 生产环境
+      return 'https://create.creamoda.ai';
+    } else {
+      // 默认回退到本地开发环境
+      return 'http://localhost:3000';
+    }
+  }, []);
+
   // 处理demo图片点击事件
   const handleDemoClick = useCallback((imageSrc: string) => {
     // 构建完整的图片URL（落地页的图片路径）
@@ -35,8 +55,8 @@ export default function HeroMain() {
     // 根据当前主题获取对应的SaaS页面配置
     const saasConfig = themeToSaasConfigMap[currentTheme.id] || { page: 'magic-kit', variationType: '3' };
     
-    // 构建SaaS系统的URL - 使用环境变量或默认localhost
-    const saasBaseUrl = process.env.NEXT_PUBLIC_SAAS_URL || 'http://localhost:3000';
+    // 动态获取SaaS系统的URL
+    const saasBaseUrl = getSaasBaseUrl();
     
     // 根据页面类型构建不同的URL
     let saasUrl: string;
@@ -63,7 +83,7 @@ export default function HeroMain() {
     
     // 在新窗口中打开SaaS系统
     window.open(saasUrl, '_blank');
-  }, [currentTheme.id]);
+  }, [currentTheme.id, getSaasBaseUrl]);
 
   return (
     <div className="hero-main">

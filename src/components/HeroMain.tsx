@@ -37,9 +37,12 @@ export default function HeroMain() {
     } else if (currentHost.includes('create.creamoda.ai')) {
       // 生产环境
       return 'https://create.creamoda.ai';
+    } else if (currentHost.includes('vercel.app')) {
+      // Vercel 预览部署环境，跳转到测试环境
+      return 'https://test-mvp.creamoda.ai';
     } else {
-      // 默认回退到本地开发环境
-      return 'http://localhost:3000';
+      // 默认回退到测试环境
+      return 'https://test-mvp.creamoda.ai';
     }
   }, []);
 

@@ -38,8 +38,8 @@ export default function Hero() {
       setIsScrolled(window.scrollY > 20);
     };
     onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true } as any);
-    return () => window.removeEventListener('scroll', onScroll as any);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const openDropdown = (dropdownName: string) => {
@@ -68,7 +68,12 @@ export default function Hero() {
       {/* 内容 */}
       <div className={`hero-content ${activeDropdown ? 'dropdown-active' : ''}`}>
         {/* 导航栏 */}
-        <nav className={`hero-nav ${isScrolled ? 'scrolled' : ''}`} ref={navRef as any}>
+        <nav
+          className={`hero-nav ${isScrolled ? 'scrolled' : ''}`}
+          ref={(el) => {
+            navRef.current = el;
+          }}
+        >
           <div className="hero-logo">
             <Image
               src={isScrolled ? "/images/logo_light.png" : "/images/logo.png"}

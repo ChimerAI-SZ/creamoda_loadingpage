@@ -6,7 +6,6 @@ import { useTheme } from '@/context/ThemeContext';
 import Hero from '@/components/Hero';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
-import ThemeSwitcher from '@/components/ThemeSwitcher';
 
 interface ThemeAwarePageProps {
   initialTheme?: string;

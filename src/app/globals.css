@@ -67,9 +67,11 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
-  margin-left: calc(-50vw + 50%);
+  z-index: 1001;
 }
 
 /* Logo保持原有颜色（黑色），无需额外样式 */
@@ -271,7 +273,14 @@ body {
   transform: rotate(180deg);
 }
 
+.dropdown-container {
+  position: relative;
+  z-index: 999;
+  margin-top: 75px;
+}
+
 .tools-dropdown {
+  position: relative;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   background: rgba(255, 255, 255, 0.10);
@@ -281,13 +290,14 @@ body {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  z-index: 1000;
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin-bottom 0.3s ease;
+  z-index: 999;
 }
 
 .tools-dropdown-open {
   max-height: 500px;
   opacity: 1;
+  margin-bottom: 0;
 }
 
 .tools-dropdown-content {
@@ -297,6 +307,22 @@ body {
   gap: 60px;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* 为不同下拉菜单设置特定的左边距 */
+.fashion-design-dropdown .tools-dropdown-content {
+  margin-left: 37.5%;
+  margin-right: auto;
+}
+
+.virtual-tryon-dropdown .tools-dropdown-content {
+  margin-left: 47.5%;
+  margin-right: auto;
+}
+
+.magic-kit-dropdown .tools-dropdown-content {
+  margin-left: 56.5%;
+  margin-right: auto;
 }
 
 .tools-category {
@@ -345,8 +371,9 @@ body {
 /* 主要内容 */
 .hero-main {
   text-align: center;
-  padding: 150px 20px 80px;
-  min-height: calc(100vh - 80px);
+  padding: 80px 20px 80px;
+  min-height: calc(100vh - 160px);
+  margin-top: 80px;
 }
 
 .hero-title {

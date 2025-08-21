@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import HeroMain from './HeroMain';
 import FusionGuide from './FusionGuide';
 import WhyChoose from './WhyChoose';
@@ -9,13 +9,55 @@ import OfferMore from './OfferMore';
 
 export default function Hero() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const navRef = useRef<HTMLElement | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const handleMouseEnter = (dropdownName: string) => {
+  useEffect(() => {
+    const updateNavHeightVar = () => {
+      const navEl = navRef.current;
+      if (!navEl) return;
+      const height = navEl.offsetHeight;
+      document.documentElement.style.setProperty('--hero-nav-height', `${height}px`);
+    };
+
+    updateNavHeightVar();
+    const resizeObserver = new ResizeObserver(updateNavHeightVar);
+    if (navRef.current) {
+      resizeObserver.observe(navRef.current);
+    }
+    window.addEventListener('resize', updateNavHeightVar);
+    return () => {
+      window.removeEventListener('resize', updateNavHeightVar);
+      resizeObserver.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true } as any);
+    return () => window.removeEventListener('scroll', onScroll as any);
+  }, []);
+
+  const openDropdown = (dropdownName: string) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
     setActiveDropdown(dropdownName);
   };
 
-  const handleMouseLeave = () => {
-    setActiveDropdown(null);
+  const scheduleClose = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+      closeTimeoutRef.current = null;
+    }, 180);
   };
 
   return (
@@ -24,12 +66,12 @@ export default function Hero() {
       <div className="hero-background"></div>
       
       {/* 内容 */}
-      <div className="hero-content">
+      <div className={`hero-content ${activeDropdown ? 'dropdown-active' : ''}`}>
         {/* 导航栏 */}
-        <nav className="hero-nav">
+        <nav className={`hero-nav ${isScrolled ? 'scrolled' : ''}`} ref={navRef as any}>
           <div className="hero-logo">
             <Image
-              src="/images/logo.png"
+              src={isScrolled ? "/images/logo_light.png" : "/images/logo.png"}
               alt="CREAMODA"
               width={140}
               height={45}
@@ -43,8 +85,8 @@ export default function Hero() {
           <div className="hero-nav-links">
             <div 
               className="nav-dropdown"
-              onMouseEnter={() => handleMouseEnter('fashion-design')}
-              onMouseLeave={handleMouseLeave}
+              onMouseEnter={() => openDropdown('fashion-design')}
+              onMouseLeave={scheduleClose}
             >
               <button 
                 className="nav-link tools-link"
@@ -64,8 +106,8 @@ export default function Hero() {
             
             <div 
               className="nav-dropdown"
-              onMouseEnter={() => handleMouseEnter('virtual-tryon')}
-              onMouseLeave={handleMouseLeave}
+              onMouseEnter={() => openDropdown('virtual-tryon')}
+              onMouseLeave={scheduleClose}
             >
               <button 
                 className="nav-link tools-link"
@@ -85,8 +127,8 @@ export default function Hero() {
             
             <div 
               className="nav-dropdown"
-              onMouseEnter={() => handleMouseEnter('magic-kit')}
-              onMouseLeave={handleMouseLeave}
+              onMouseEnter={() => openDropdown('magic-kit')}
+              onMouseLeave={scheduleClose}
             >
               <button 
                 className="nav-link tools-link"
@@ -114,27 +156,27 @@ export default function Hero() {
           {/* Fashion Design 下拉菜单 */}
           {activeDropdown === 'fashion-design' && (
             <div 
-              className="tools-dropdown tools-dropdown-open fashion-design-dropdown"
-              onMouseEnter={() => handleMouseEnter('fashion-design')}
-              onMouseLeave={handleMouseLeave}
+              className={`tools-dropdown tools-dropdown-open fashion-design-dropdown ${isScrolled ? 'tools-dropdown-scrolled' : ''}`}
+              onMouseEnter={() => openDropdown('fashion-design')}
+              onMouseLeave={scheduleClose}
             >
               <div className="tools-dropdown-content">
                 <div className="tools-category">
-                  <h3 className="category-title">Design Kit</h3>
+                  {/* <h3 className="category-title">Design Kit</h3> */}
                   <div className="category-items-container">
                     <div className="category-items">
-                      <a href="#" className="tool-item">text to image</a>
-                      <a href="#" className="tool-item">copy style</a>
-                      <a href="#" className="tool-item">mix 2 images</a>
-                      <a href="#" className="tool-item">change clothes</a>
-                      <a href="#" className="tool-item">fabric to design</a>
-                      <a href="#" className="tool-item">sketch to design</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">text to image</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">copy style</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">mix 2 images</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">change clothes</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">fabric to design</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">sketch to design</a>
                     </div>
                     <div className="category-items">
-                      <a href="#" className="tool-item">change style</a>
-                      <a href="#" className="tool-item">change fabric</a>
-                      <a href="#" className="tool-item">change printing</a>
-                      <a href="#" className="tool-item">style fusion</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">change style</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">change fabric</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">change printing</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">style fusion</a>
                     </div>
                   </div>
                 </div>
@@ -145,16 +187,16 @@ export default function Hero() {
           {/* Virtual Try-on 下拉菜单 */}
           {activeDropdown === 'virtual-tryon' && (
             <div 
-              className="tools-dropdown tools-dropdown-open virtual-tryon-dropdown"
-              onMouseEnter={() => handleMouseEnter('virtual-tryon')}
-              onMouseLeave={handleMouseLeave}
+              className={`tools-dropdown tools-dropdown-open virtual-tryon-dropdown ${isScrolled ? 'tools-dropdown-scrolled' : ''}`}
+              onMouseEnter={() => openDropdown('virtual-tryon')}
+              onMouseLeave={scheduleClose}
             >
               <div className="tools-dropdown-content">
                 <div className="tools-category">
-                  <h3 className="category-title">Virtual Tryon</h3>
+                  {/* <h3 className="category-title">Virtual Tryon</h3> */}
                   <div className="category-items">
-                    <a href="#" className="tool-item">virtual try-on</a>
-                    <a href="#" className="tool-item">change pose</a>
+                    <a href="https://create.creamoda.ai/virtual-try-on" className="tool-item">virtual try-on</a>
+                    <a href="https://create.creamoda.ai/virtual-try-on" className="tool-item">change pose</a>
                   </div>
                 </div>
               </div>
@@ -164,24 +206,24 @@ export default function Hero() {
           {/* Magic Kit 下拉菜单 */}
           {activeDropdown === 'magic-kit' && (
             <div 
-              className="tools-dropdown tools-dropdown-open magic-kit-dropdown"
-              onMouseEnter={() => handleMouseEnter('magic-kit')}
-              onMouseLeave={handleMouseLeave}
+              className={`tools-dropdown tools-dropdown-open magic-kit-dropdown ${isScrolled ? 'tools-dropdown-scrolled' : ''}`}
+              onMouseEnter={() => openDropdown('magic-kit')}
+              onMouseLeave={scheduleClose}
             >
               <div className="tools-dropdown-content">
                 <div className="tools-category">
-                  <h3 className="category-title">Magic Kit</h3>
+                  {/* <h3 className="category-title">Magic Kit</h3> */}
                   <div className="category-items-container">
                     <div className="category-items">
-                      <a href="#" className="tool-item">change color</a>
-                      <a href="#" className="tool-item">change background</a>
-                      <a href="#" className="tool-item">remove background</a>
-                      <a href="#" className="tool-item">partial modification</a>
-                      <a href="#" className="tool-item">upscale</a>
+                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">change color</a>
+                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">change background</a>
+                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">remove background</a>
+                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">partial modification</a>
+                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">upscale</a>
                     </div>
                     <div className="category-items">
-                      <a href="#" className="tool-item">pattern extraction</a>
-                      <a href="#" className="tool-item">pattern application</a>
+                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">pattern extraction</a>
+                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">pattern application</a>
                     </div>
                   </div>
                 </div>

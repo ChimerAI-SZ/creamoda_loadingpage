@@ -58,6 +58,18 @@ body {
   margin: 0 auto;
 }
 
+/* 下拉展开时虚化主标题与副标题 */
+.dropdown-active .hero-title,
+.dropdown-active .hero-subtitle {
+  filter: blur(8px);
+  transition: filter 0.2s ease;
+}
+
+.hero-title,
+.hero-subtitle {
+  transition: filter 0.2s ease;
+}
+
 /* 导航栏 */
 .hero-nav {
   display: flex;
@@ -73,6 +85,28 @@ body {
   left: 0;
   width: 100vw;
   z-index: 1001;
+}
+
+/* 滚动后固定为黑色并提升可读性 */
+.hero-nav.scrolled {
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* 滚动后黑底下文字和箭头变白，按钮也适配 */
+.hero-nav.scrolled .nav-link,
+.hero-nav.scrolled .tools-link {
+  color: white;
+}
+
+.hero-nav.scrolled .dropdown-arrow {
+  stroke: white;
+}
+
+.hero-nav.scrolled .create-btn {
+  background: #6b4ff6;
+  color: white;
 }
 
 /* Logo保持原有颜色（黑色），无需额外样式 */
@@ -211,10 +245,11 @@ body {
 }
 
 .nav-link {
-  color: white;
+  color: black;
   text-decoration: none;
   font-size: clamp(12px, 2vw, 16px);
   font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 600;
   transition: opacity 0.3s;
   white-space: nowrap;
 }
@@ -253,10 +288,11 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: white;
+  color: black;
   text-decoration: none;
   font-size: clamp(12px, 2vw, 16px);
   font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 600;
   transition: opacity 0.3s;
   white-space: nowrap;
 }
@@ -267,7 +303,7 @@ body {
 
 .dropdown-arrow {
   transition: transform 0.3s ease;
-  stroke: white;
+  stroke: black;
 }
 
 .dropdown-arrow-open {
@@ -281,18 +317,51 @@ body {
 }
 
 .tools-dropdown {
-  position: relative;
+  position: fixed; /* 固定定位，随滚动保持在视口内 */
+  top: var(--hero-nav-height, 75px); /* 跟随导航实时高度 */
+  left: 0;
   width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  background: rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.40);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   max-height: 0;
   overflow: hidden;
   opacity: 0;
   transition: max-height 0.3s ease, opacity 0.3s ease, margin-bottom 0.3s ease;
-  z-index: 999;
+  z-index: 1000; /* 低于导航(1001)，高于内容 */
+}
+
+/* 下拉菜单滚动后的深色主题，与导航同步 */
+.tools-dropdown-scrolled {
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* 下拉里的文字颜色在深色主题下也变为白色 */
+.tools-dropdown-scrolled .category-title,
+.tools-dropdown-scrolled .tool-item {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tools-dropdown-scrolled .tool-item:hover {
+  color: #ffffff;
+}
+
+/* 未滚动：确保下拉内文本为黑色（提高选择器优先级以避免被覆盖） */
+.tools-dropdown:not(.tools-dropdown-scrolled) .category-title,
+.tools-dropdown:not(.tools-dropdown-scrolled) .tool-item {
+  color: #000000;
+}
+
+.tools-dropdown:not(.tools-dropdown-scrolled) .tool-item:hover {
+  color: #000000;
+}
+
+.tools-dropdown:not(.tools-dropdown-scrolled) .category-title {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .tools-dropdown-open {
@@ -336,7 +405,7 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   font-weight: 600;
   font-size: 18px;
-  color: white;
+  color: black; /* 未滚动时使用深色文字 */
   margin: 0 0 16px 0;
   line-height: 1.3;
   opacity: 0.9;
@@ -357,7 +426,7 @@ body {
 }
 
 .tool-item {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.85); /* 未滚动时使用深色文字 */
   text-decoration: none;
   font-size: 14px;
   font-family: system-ui, -apple-system, sans-serif;
@@ -366,7 +435,7 @@ body {
 }
 
 .tool-item:hover {
-  color: white;
+  color: black;
 }
 
 /* 主要内容 */

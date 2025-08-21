@@ -89,10 +89,19 @@ export default function OfferMore() {
         </div>
       </div>
       <div className="offer-more-cards" ref={cardsContainerRef}>
-        <div className="offer-card" onClick={() => handleCardClick('Image Background Remover')} style={{ cursor: 'pointer' }}>
-          <div className="offer-card-image">
+        <div className="offer-card offer-card-with-corner" onClick={() => handleCardClick('Image Background Remover')} style={{ cursor: 'pointer' }}>
+          <div className="corner-image">
             <Image
-              src="/images/card/remove_bg.png"
+              src="/images/card/removes_bg_rt.png"
+              alt="Background Remover Corner"
+              width={120}
+              height={180}
+              className="corner-img"
+            />
+          </div>
+          <div className="offer-card-image offer-card-image-transparent">
+            <Image
+              src="/images/card/removes_bg.png"
               alt="Image Background Remover"
               width={280}
               height={201}
@@ -107,7 +116,7 @@ export default function OfferMore() {
         <div className="offer-card" onClick={() => handleCardClick('Image Background Changer')} style={{ cursor: 'pointer' }}>
           <div className="offer-card-image">
             <Image
-              src="/images/card/change_bg.png"
+              src="/images/card/changes_bg.png"
               alt="Image Background Changer"
               width={280}
               height={201}
@@ -119,15 +128,33 @@ export default function OfferMore() {
             <p className="offer-card-desc">Replace any background with custom colors, images, or scenes.</p>
           </div>
         </div>
-        <div className="offer-card" onClick={() => handleCardClick('Image Enhancer')} style={{ cursor: 'pointer' }}>
+        <div className="offer-card offer-card-with-enhance" onClick={() => handleCardClick('Image Enhancer')} style={{ cursor: 'pointer' }}>
           <div className="offer-card-image">
             <Image
-              src="/images/card/upscale.png"
+              src="/images/card/upscaless.png"
               alt="Image Enhancer"
               width={280}
               height={201}
               className="card-img"
             />
+            {/* <div className="enhance-left">
+              <Image
+                src="/images/card/upscale_l.png"
+                alt="Before Enhancement"
+                width={75}
+                height={75}
+                className="enhance-img"
+              />
+            </div> */}
+            <div className="enhance-right">
+              <Image
+                src="/images/card/upscale_r.png"
+                alt="After Enhancement"
+                width={70}
+                height={70}
+                className="enhance-img"
+              />
+            </div>
           </div>
           <div className="offer-card-content">
             <h3 className="offer-card-title">Image Enhancer</h3>
@@ -149,15 +176,24 @@ export default function OfferMore() {
             <p className="offer-card-desc">Edit or replace only the areas you select, keeping the rest untouched.</p>
           </div>
         </div>
-        <div className="offer-card" onClick={() => handleCardClick('Image Color Changer')} style={{ cursor: 'pointer' }}>
+        <div className="offer-card offer-card-with-color" onClick={() => handleCardClick('Image Color Changer')} style={{ cursor: 'pointer' }}>
           <div className="offer-card-image">
             <Image
-              src="/images/card/change_color.png"
+              src="/images/card/change_colors.png"
               alt="Image Color Changer"
               width={280}
               height={201}
               className="card-img"
             />
+            <div className="color-change-right">
+              <Image
+                src="/images/card/change_color_r.png"
+                alt="Color Change Effect"
+                width={110}
+                height={120}
+                className="color-change-img"
+              />
+            </div>
           </div>
           <div className="offer-card-content">
             <h3 className="offer-card-title">Image Color Changer</h3>
@@ -182,7 +218,7 @@ export default function OfferMore() {
         <div className="offer-card" onClick={() => handleCardClick('AI Outfit Generator')} style={{ cursor: 'pointer' }}>
           <div className="offer-card-image">
             <Image
-              src="/images/card/design.png"
+              src="/images/card/designs.png"
               alt="AI Outfit Generator"
               width={280}
               height={201}

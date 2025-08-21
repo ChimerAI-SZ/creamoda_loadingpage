@@ -119,8 +119,8 @@ export default function HeroMain() {
               />
               {heroMain.uploadText}
             </button>
-            <p className="upload-demo-text">{heroMain.uploadSubText}</p>
-            <button className="upload-tips-btn">
+            {/* <p className="upload-demo-text">{heroMain.uploadSubText}</p> */}
+            {/* <button className="upload-tips-btn">
               <Image
                 src="/images/hero/enhance/light.png"
                 alt="Tips icon"
@@ -129,7 +129,7 @@ export default function HeroMain() {
                 className="tips-icon"
               />
               Upload Tips
-            </button>
+            </button> */}
           </div>
           
           <div className="demo-suggestions">

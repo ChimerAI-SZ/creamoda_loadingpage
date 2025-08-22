@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -67,7 +68,7 @@ export default function Footer() {
             <h3 className="footer-section-title">AI Features</h3>
             <div className="footer-features">
               <div className="feature-group">
-                <a href="https://create.creamoda.ai/" className="feature-item">Text to Image</a>
+                <Link href="/outfit-generator" className="feature-item">Text to Image</Link>
                 <a href="https://create.creamoda.ai/" className="feature-item">Copy Style</a>
                 <a href="https://create.creamoda.ai/" className="feature-item">Mix 2 Images</a>
                 <a href="https://create.creamoda.ai/" className="feature-item">Change Clothes</a>

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import HeroMain from './HeroMain';
 import FusionGuide from './FusionGuide';
@@ -170,11 +171,11 @@ export default function Hero() {
                   {/* <h3 className="category-title">Design Kit</h3> */}
                   <div className="category-items-container">
                     <div className="category-items">
-                      <a href="/sketch-to-image" className="tool-item">AI Outfit Generator</a>
-                      <a href="/sketch-to-image" className="tool-item">AI Sketch to Image Converter</a>
-                      <a href="/sketch-to-image" className="tool-item">Video Virtual Try-on</a>
-                      <a href="/sketch-to-image" className="tool-item">Plus-Size Try-on Model</a>
-                      <a href="/sketch-to-image" className="tool-item">AI Image Extender</a>
+                      <Link href="/sketch-to-image" className="tool-item">AI Outfit Generator</Link>
+                      <Link href="/sketch-to-image" className="tool-item">AI Sketch to Image Converter</Link>
+                      <Link href="/sketch-to-image" className="tool-item">Video Virtual Try-on</Link>
+                      <Link href="/sketch-to-image" className="tool-item">Plus-Size Try-on Model</Link>
+                      <Link href="/sketch-to-image" className="tool-item">AI Image Extender</Link>
                       
                     </div>
                     {/* <div className="category-items">
@@ -200,7 +201,7 @@ export default function Hero() {
                 <div className="tools-category">
                   {/* <h3 className="category-title">Virtual Tryon</h3> */}
                   <div className="category-items">
-                    <a href="/virtual-try-on" className="tool-item">Virtual Try-On</a>
+                    <Link href="/virtual-try-on" className="tool-item">Virtual Try-On</Link>
                     {/* <a href="https://create.creamoda.ai/virtual-try-on" className="tool-item">Change Pose</a> */}
                   </div>
                 </div>
@@ -220,11 +221,11 @@ export default function Hero() {
                   {/* <h3 className="category-title">Magic Kit</h3> */}
                   <div className="category-items-container">
                     <div className="category-items">
-                      <a href="/image-background-remover" className="tool-item">Image Background Remover</a>
-                      <a href="/image-background-changer" className="tool-item">Image Background Changer</a>
-                      <a href="/image-enhancer" className="tool-item">Image Enhancer</a>
-                      <a href="/image-changer" className="tool-item">AI Image Changer</a>
-                      <a href="/image-color-changer" className="tool-item">Image Color Changer</a>
+                      <Link href="/image-background-remover" className="tool-item">Image Background Remover</Link>
+                      <Link href="/image-background-changer" className="tool-item">Image Background Changer</Link>
+                      <Link href="/image-enhancer" className="tool-item">Image Enhancer</Link>
+                      <Link href="/image-changer" className="tool-item">AI Image Changer</Link>
+                      <Link href="/image-color-changer" className="tool-item">Image Color Changer</Link>
                     </div>
                     {/* <div className="category-items">
                       <a href="https://create.creamoda.ai/magic-kit" className="tool-item">Pattern Extraction</a>

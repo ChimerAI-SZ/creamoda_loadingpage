@@ -377,7 +377,7 @@ export const themes: Record<string, ThemeConfig> = {
     id: 'color_change',
     name: 'AI颜色替换',
     heroMain: {
-      title: 'AI Color Changer',
+      title: 'Image Color Changer',
       subtitle: 'AI-powered color swapping that keeps textures and lighting intact—no more unnatural patches or mismatched shadows.',
       mainImage: '/images/hero/color_changer/color_changer.png',
       uploadText: 'Try Now',

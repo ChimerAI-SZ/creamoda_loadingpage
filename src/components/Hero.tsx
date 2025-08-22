@@ -173,9 +173,9 @@ export default function Hero() {
                     <div className="category-items">
                       <Link href="/sketch-to-image" className="tool-item">AI Outfit Generator</Link>
                       <Link href="/sketch-to-image" className="tool-item">AI Sketch to Image Converter</Link>
-                      <Link href="/sketch-to-image" className="tool-item">Video Virtual Try-on</Link>
+                      {/* <Link href="/sketch-to-image" className="tool-item">Video Virtual Try-on</Link>
                       <Link href="/sketch-to-image" className="tool-item">Plus-Size Try-on Model</Link>
-                      <Link href="/sketch-to-image" className="tool-item">AI Image Extender</Link>
+                      <Link href="/sketch-to-image" className="tool-item">AI Image Extender</Link> */}
                       
                     </div>
                     {/* <div className="category-items">

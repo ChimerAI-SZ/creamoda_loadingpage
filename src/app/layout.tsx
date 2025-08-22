@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
+import EnvIndicator from "@/components/EnvIndicator";
 
 export const metadata: Metadata = {
   title: "Chimer AI Tools",
@@ -70,6 +71,7 @@ export default function RootLayout({
           }}
         />
         <ThemeProvider>
+          <EnvIndicator />
           {children}
         </ThemeProvider>
       </body>

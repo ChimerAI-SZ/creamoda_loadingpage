@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { getSaasUrlByRoute } from '../config/routes';
 import HeroMain from './HeroMain';
 import FusionGuide from './FusionGuide';
 import WhyChoose from './WhyChoose';
@@ -13,6 +15,10 @@ export default function Hero() {
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navRef = useRef<HTMLElement | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  
+  // 获取当前页面对应的SaaS URL
+  const currentSaasUrl = getSaasUrlByRoute(pathname.replace('/', ''));
 
   useEffect(() => {
     const updateNavHeightVar = () => {
@@ -154,7 +160,14 @@ export default function Hero() {
             
       
           </div>
-          <button className="create-btn">Create</button>
+          <a 
+            href={currentSaasUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="create-btn"
+          >
+            Create
+          </a>
         </nav>
 
         {/* 下拉菜单容器 */}

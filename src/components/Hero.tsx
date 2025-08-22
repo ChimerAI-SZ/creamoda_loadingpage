@@ -1,10 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { getSaasUrlByRoute } from '../config/routes';
+import { handleNavigation } from '../utils/navigation';
 import HeroMain from './HeroMain';
 import FusionGuide from './FusionGuide';
 import WhyChoose from './WhyChoose';
@@ -16,6 +16,7 @@ export default function Hero() {
   const navRef = useRef<HTMLElement | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   
   // 获取当前页面对应的SaaS URL
   const currentSaasUrl = getSaasUrlByRoute(pathname.replace('/', ''));
@@ -184,11 +185,21 @@ export default function Hero() {
                   {/* <h3 className="category-title">Design Kit</h3> */}
                   <div className="category-items-container">
                     <div className="category-items">
-                      <Link href="/outfit-generator" className="tool-item">AI Outfit Generator</Link>
-                      <Link href="/sketch-to-image" className="tool-item">AI Sketch to Image Converter</Link>
-                      {/* <Link href="/sketch-to-image" className="tool-item">Video Virtual Try-on</Link>
-                      <Link href="/sketch-to-image" className="tool-item">Plus-Size Try-on Model</Link>
-                      <Link href="/sketch-to-image" className="tool-item">AI Image Extender</Link> */}
+                      <button 
+                        onClick={(e) => handleNavigation('outfit-generator', router, e)} 
+                        className="tool-item"
+                      >
+                        AI Outfit Generator
+                      </button>
+                      <button 
+                        onClick={(e) => handleNavigation('sketch-to-image', router, e)} 
+                        className="tool-item"
+                      >
+                        AI Sketch to Image Converter
+                      </button>
+                      {/* <button onClick={(e) => handleNavigation('sketch-to-image', router, e)} className="tool-item">Video Virtual Try-on</button>
+                      <button onClick={(e) => handleNavigation('sketch-to-image', router, e)} className="tool-item">Plus-Size Try-on Model</button>
+                      <button onClick={(e) => handleNavigation('sketch-to-image', router, e)} className="tool-item">AI Image Extender</button> */}
                       
                     </div>
                     {/* <div className="category-items">
@@ -214,7 +225,12 @@ export default function Hero() {
                 <div className="tools-category">
                   {/* <h3 className="category-title">Virtual Tryon</h3> */}
                   <div className="category-items">
-                    <Link href="/virtual-try-on" className="tool-item">Virtual Try-On</Link>
+                    <button 
+                      onClick={(e) => handleNavigation('virtual-try-on', router, e)} 
+                      className="tool-item"
+                    >
+                      Virtual Try-On
+                    </button>
                     {/* <a href="https://create.creamoda.ai/virtual-try-on" className="tool-item">Change Pose</a> */}
                   </div>
                 </div>
@@ -234,11 +250,36 @@ export default function Hero() {
                   {/* <h3 className="category-title">Magic Kit</h3> */}
                   <div className="category-items-container">
                     <div className="category-items">
-                      <Link href="/image-background-remover" className="tool-item">Image Background Remover</Link>
-                      <Link href="/image-background-changer" className="tool-item">Image Background Changer</Link>
-                      <Link href="/image-enhancer" className="tool-item">Image Enhancer</Link>
-                      <Link href="/image-changer" className="tool-item">AI Image Changer</Link>
-                      <Link href="/image-color-changer" className="tool-item">Image Color Changer</Link>
+                      <button 
+                        onClick={(e) => handleNavigation('image-background-remover', router, e)} 
+                        className="tool-item"
+                      >
+                        Image Background Remover
+                      </button>
+                      <button 
+                        onClick={(e) => handleNavigation('image-background-changer', router, e)} 
+                        className="tool-item"
+                      >
+                        Image Background Changer
+                      </button>
+                      <button 
+                        onClick={(e) => handleNavigation('image-enhancer', router, e)} 
+                        className="tool-item"
+                      >
+                        Image Enhancer
+                      </button>
+                      <button 
+                        onClick={(e) => handleNavigation('image-changer', router, e)} 
+                        className="tool-item"
+                      >
+                        AI Image Changer
+                      </button>
+                      <button 
+                        onClick={(e) => handleNavigation('image-color-changer', router, e)} 
+                        className="tool-item"
+                      >
+                        Image Color Changer
+                      </button>
                     </div>
                     {/* <div className="category-items">
                       <a href="https://create.creamoda.ai/magic-kit" className="tool-item">Pattern Extraction</a>

@@ -190,13 +190,59 @@ export default async function DynamicPage({ params }: PageProps) {
     virtual_try: { ratingValue: '4.9', reviewCount: '284' },
   };
 
+  // 每个功能页的产品信息映射
+  const productInfoMap: Record<string, { name: string; description: string; sku: string }> = {
+    background_remove: {
+      name: 'AI Background Remover',
+      description: 'Instantly cut out subjects and get a clean, transparent PNG in seconds. Professional quality background removal powered by AI.',
+      sku: 'AI-BGR-001'
+    },
+    background_change: {
+      name: 'AI Background Changer', 
+      description: 'Replace any background with custom colors, images, or scenes. AI-powered background replacement made simple.',
+      sku: 'AI-BGC-001'
+    },
+    image_enhance: {
+      name: 'AI Image Enhancer',
+      description: 'Boost image resolution up to 2x without losing sharpness or detail. Transform blurry photos into crystal clear images.',
+      sku: 'AI-ENH-001'
+    },
+    partial_modify: {
+      name: 'AI Image Changer',
+      description: 'Edit or replace only the areas you select, keeping the rest untouched. Precise AI-powered selective editing.',
+      sku: 'AI-CHG-001'
+    },
+    color_change: {
+      name: 'AI Color Changer',
+      description: 'Instantly swap product or object colors with realistic results. Perfect for e-commerce and design workflows.',
+      sku: 'AI-COL-001'
+    },
+    virtual_try: {
+      name: 'AI Virtual Try-On',
+      description: 'Generate lifelike model images wearing your products, cutting shoot costs and boosting sales.',
+      sku: 'AI-VTO-001'
+    },
+    outfit_generator: {
+      name: 'AI Outfit Generator',
+      description: 'Generate and customize fashion outfits — swap fabrics, tweak styles, redesign patterns, all in one tool.',
+      sku: 'AI-OUT-001'
+    },
+    sketch_convert: {
+      name: 'AI Sketch to Image Converter',
+      description: 'Turn garment sketches into realistic images for prototyping and presentations. From concept to visual in seconds.',
+      sku: 'AI-SKT-001'
+    }
+  };
+
+  const productInfo = productInfoMap[themeId] || productInfoMap.background_remove;
+
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: 'AI 图片生成工具',
+    name: productInfo.name,
     image: imageMap[themeId] || '/images/card/removes_bg.png',
-    description: '免费在线 AI 图片生成工具，支持一键生成高清电商图、AI 模特图和创意图片。',
-    sku: 'AI-IMG-001',
+    description: productInfo.description,
+    sku: productInfo.sku,
     brand: { '@type': 'Brand', name: 'Creamoda' },
     aggregateRating: {
       '@type': 'AggregateRating',

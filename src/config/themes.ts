@@ -8,7 +8,7 @@ export const themes: Record<string, ThemeConfig> = {
       title: 'AI Background Remover',
       subtitle: 'One-click professional background removal powered by AI - get pixel-perfect results in seconds.',
       mainImage: '/images/hero/background_remover/remove_backgrounds.png',
-      uploadText: 'Upload Image',
+      uploadText: 'Try Now',
       uploadSubText: 'Or drop a file, paste image or URL',
       demoImages: [
         '/images/hero/background_remover/one.png',
@@ -23,7 +23,7 @@ export const themes: Record<string, ThemeConfig> = {
         {
           icon: '/images/feature/picture.png',
           title: 'Upload Your Image',
-          description: 'Upload images from your device (supports JPEG/PNG) or paste URLs, using high-resolution images can achieve the best results.'
+          description: 'Try Nows from your device (supports JPEG/PNG) or paste URLs, using high-resolution images can achieve the best results.'
         },
         {
           icon: '/images/feature/water.png',
@@ -132,7 +132,7 @@ export const themes: Record<string, ThemeConfig> = {
       title: 'AI Background Changer',
       subtitle: 'Replace any background in seconds—no skills needed.',
       mainImage: '/images/hero/background_changer/change_backgrounds.png',
-      uploadText: 'Upload Image',
+      uploadText: 'Try Now',
       uploadSubText: 'Or drop a file, paste image or URL',
       demoImages: [
         '/images/hero/background_changer/one.png',
@@ -256,7 +256,7 @@ export const themes: Record<string, ThemeConfig> = {
       title: 'AI Image Enhancer',
       subtitle: 'Transform low-quality images into stunning high-resolution masterpieces with one click – powered by AI.',
       mainImage: '/images/hero/enhance/enhance.png',
-      uploadText: 'Upload Image',
+      uploadText: 'Try Now',
       uploadSubText: 'Or drop a file, paste image or URL',
       demoImages: [
         '/images/hero/enhance/one.png',
@@ -380,7 +380,7 @@ export const themes: Record<string, ThemeConfig> = {
       title: 'AI Color Changer',
       subtitle: 'AI-powered color swapping that keeps textures and lighting intact—no more unnatural patches or mismatched shadows.',
       mainImage: '/images/hero/color_changer/color_changer.png',
-      uploadText: 'Upload Image',
+      uploadText: 'Try Now',
       uploadSubText: 'Or drop a file, paste image or URL',
       demoImages: [
         '/images/hero/color_changer/one.webp',
@@ -395,7 +395,7 @@ export const themes: Record<string, ThemeConfig> = {
         {
           icon: '/images/feature/picture.png',
           title: 'Upload & Select Colors',
-          description: 'Upload image (JPEG/PNG), sample colors or input HEX codes with sliders for fine-tuning.'
+          description: 'Try Now (JPEG/PNG), sample colors or input HEX codes with sliders for fine-tuning.'
         },
         {
           icon: '/images/feature/water.png',
@@ -878,7 +878,7 @@ export const themes: Record<string, ThemeConfig> = {
       title: 'AI Image Changer',
       subtitle: 'Modify only what you need—AI handles the rest with pixel-perfect precision.',
       mainImage: '/images/hero/changer/changer.png',
-      uploadText: 'Upload Image',
+      uploadText: 'Try Now',
       uploadSubText: 'Or drop a file, paste image or URL',
       demoImages: [
         '/images/hero/changer/one.png',
@@ -893,7 +893,7 @@ export const themes: Record<string, ThemeConfig> = {
         {
           icon: '/images/feature/picture.png',
           title: 'Upload & Describe ',
-          description: 'Edits Upload image (JPEG/PNG) and specify changes (e.g., "change shirt to T-shirt")'
+          description: 'Edits Try Now (JPEG/PNG) and specify changes (e.g., "change shirt to T-shirt")'
         },
         {
           icon: '/images/feature/water.png',

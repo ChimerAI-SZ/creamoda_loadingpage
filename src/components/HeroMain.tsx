@@ -109,7 +109,12 @@ export default function HeroMain() {
         
         <div className="upload-showcase">
           <div className="upload-demo-area">
-            <button className="upload-demo-btn">
+            <a 
+              href="https://create.creamoda.ai/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="upload-demo-btn"
+            >
               <Image
                 src="/images/hero/upload.png"
                 alt="Upload icon"
@@ -118,7 +123,7 @@ export default function HeroMain() {
                 className="upload-icon"
               />
               {heroMain.uploadText}
-            </button>
+            </a>
             {/* <p className="upload-demo-text">{heroMain.uploadSubText}</p> */}
             {/* <button className="upload-tips-btn">
               <Image

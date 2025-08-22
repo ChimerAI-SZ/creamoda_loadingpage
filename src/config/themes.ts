@@ -23,7 +23,7 @@ export const themes: Record<string, ThemeConfig> = {
         {
           icon: '/images/feature/picture.png',
           title: 'Upload Your Image',
-          description: 'Try Nows from your device (supports JPEG/PNG) or paste URLs, using high-resolution images can achieve the best results.'
+          description: 'Upload images from your device (supports JPEG/PNG) or paste URLs, using high-resolution images can achieve the best results.'
         },
         {
           icon: '/images/feature/water.png',
@@ -129,7 +129,7 @@ export const themes: Record<string, ThemeConfig> = {
     id: 'background_change',
     name: 'AI背景替换',
     heroMain: {
-      title: 'AI Background Changer',
+      title: 'Image Background Changer',
       subtitle: 'Replace any background in seconds—no skills needed.',
       mainImage: '/images/hero/background_changer/change_backgrounds.png',
       uploadText: 'Try Now',
@@ -395,7 +395,7 @@ export const themes: Record<string, ThemeConfig> = {
         {
           icon: '/images/feature/picture.png',
           title: 'Upload & Select Colors',
-          description: 'Try Now (JPEG/PNG), sample colors or input HEX codes with sliders for fine-tuning.'
+          description: 'Upload image (JPEG/PNG), sample colors or input HEX codes with sliders for fine-tuning.'
         },
         {
           icon: '/images/feature/water.png',
@@ -502,10 +502,10 @@ export const themes: Record<string, ThemeConfig> = {
     id: 'virtual_try',
     name: 'AI虚拟试穿',
     heroMain: {
-      title: 'AI Virtual Try-On Tool',
+      title: 'AI Virtual Try-On',
       subtitle: 'Immediately imagine the fit of any clothing with realistic pose adjustments - perfect for shoppers, designers, and brands. No physical samples required.',
       mainImage: '/images/hero/virtual_try/virtual_tryes.png',
-      uploadText: 'Upload Product',
+      uploadText: 'Try Now',
       uploadSubText: 'Or drop a product image or URL',
       demoImages: [
         '/images/hero/virtual_try/one.jpg',
@@ -520,17 +520,17 @@ export const themes: Record<string, ThemeConfig> = {
         {
           icon: '/images/feature/picture.png',
           title: 'Upload Your Photo',
-          description: 'Upload your full-body photo (JPEG/PNG) or paste an image URL. For best results, use a clear, well-lit photo with visible posture.'
+          description: 'Upload your apparel image and a target model image. For best results, use a clear, well-lit photo with visible posture.'
         },
         {
           icon: '/images/feature/water.png',
           title: 'Select Garment & Pose',
-          description: 'Choose the garment category (Top/Bottom/One-Piece) and upload clothing image or select from presets. Optionally upload a reference pose image for realistic adjustments.'
+          description: 'Choose the garment category (Top/Bottom/One-Piece) and optionally upload a reference pose image for realistic adjustments.'
         },
         {
           icon: '/images/feature/download.png',
           title: 'Generate & Download',
-          description: 'Get your AI-processed image in seconds, then download the high-resolution result (PNG'
+          description: 'Get your AI-processed image in seconds, then download the high-resolution try-on result.'
         }
       ]
     },
@@ -539,15 +539,15 @@ export const themes: Record<string, ThemeConfig> = {
       cards: [
         {
           title: 'Realistic Fit Simulation',
-          description: 'Our AI analyzes body shape, fabric properties AND natural body mechanics to show how clothes would fit, drape, and move - including size accuracy, styling options and realistic pose adjustments.'
+          description: 'Chimer AI analyzes body shape, fabric behavior, and movement dynamics to help designers and brands simulate how garments fit, drape, and adjust across sizes and poses — enabling early design validation.'
         },
         {
-          title: 'Time-Saving Shopping Experience',
-          description: 'Skip physical changing rooms - try multiple outfits with different poses in minutes. Perfect for online shoppers who want confidence before purchasing.'
+          title: 'Efficient Design & Marketing Workflow',
+          description: 'Skip physical fittings and costly photo shoots — generate multiple virtual try-on images in minutes for concept reviews, market testing, or e-commerce display.'
         },
         {
-          title: 'Complete Virtual Wardrobe Solution',
-          description: 'Try your own clothes or preset garments with customizable poses. AI preserves stitch density, print alignment and fabric behavior while adjusting posture naturally.'
+          title: 'End-to-End Virtual Garment Solution',
+          description: 'Upload finished garments to create realistic try-on visuals. AI preserves stitching, prints, and fabric flow while adapting poses naturally, providing accurate references for prototyping, marketing, and supply chain collaboration.'
         }
       ]
     },
@@ -629,7 +629,7 @@ export const themes: Record<string, ThemeConfig> = {
       title: 'AI Outfit Generator',
       subtitle: 'Turn Ideas into Art Instantly – Generate unique images from text or transform your photos with AI-powered creativity. No design skills required!',
       mainImage: '/images/hero/outfit_generator/outfit_generator.png',
-      uploadText: 'Upload Reference',
+      uploadText: 'Try Now',
       uploadSubText: 'Or drop a design reference or URL',
       demoImages: [
         '/images/hero/outfit_generator/one.jpg',
@@ -644,17 +644,17 @@ export const themes: Record<string, ThemeConfig> = {
         {
           icon: '/images/feature/picture.png',
           title: 'Input & Customize',
-          description: 'For text to image: Enter your creative tip (such as "a man wearing a silver down jacket and black work pants") and customize it using presets such as age, type, or aspect ratio. For image to image: Upload your photo (supporting JPEG/PNG/URL) and describe the desired changes (such as "changing the color of the jacket to black") or choose from the design features we have pre-set for you, with multiple selections supported.'
+          description: 'Enter a prompt or upload a photo, then describe the desired changes or choose from the design features with multiple selections supported.'
         },
         {
           icon: '/images/feature/water.png',
           title: 'AI Processing',
-          description: 'Our AI generates or transforms your image in seconds. For Image-to-Image, it preserves original details while applying your edits. Preview and tweak results if needed.'
+          description: 'Our AI generates or transforms your image in seconds. For images, it preserves original details while applying your edits. Preview and tweak results if needed.'
         },
         {
           icon: '/images/feature/download.png',
           title: 'Download & Share',
-          description: 'Download your high-resolution image (PNG). Use it directly or refine further with Creamoda’s editing tools. All outputs are saved to your portfolio for easy access.'
+          description: 'Download your high-resolution image. Use it directly or refine further with Creamoda’s editing tools. All outputs are saved to your portfolio for easy access.'
         }
       ]
     },
@@ -751,10 +751,10 @@ export const themes: Record<string, ThemeConfig> = {
     id: 'sketch_convert',
     name: 'AI草图转图片',
     heroMain: {
-      title: 'AI Sketch Converter',
+      title: 'AI Sketch to Image Converter',
       subtitle: 'Upload your hand drawing and let AI convert it into a production-ready design - with textures, colors, and clean lines automatically applied.',
       mainImage: '/images/hero/sketch_convert/sketch_convert.png',
-      uploadText: 'Upload Sketch',
+      uploadText: 'Try Now',
       uploadSubText: 'Or drop a sketch image or URL',
       demoImages: [
         '/images/hero/sketch_convert/one.png',
@@ -893,7 +893,7 @@ export const themes: Record<string, ThemeConfig> = {
         {
           icon: '/images/feature/picture.png',
           title: 'Upload & Describe ',
-          description: 'Edits Try Now (JPEG/PNG) and specify changes (e.g., "change shirt to T-shirt")'
+          description: 'Edits Upload image (JPEG/PNG) and specify changes (e.g., "change shirt to T-shirt")'
         },
         {
           icon: '/images/feature/water.png',

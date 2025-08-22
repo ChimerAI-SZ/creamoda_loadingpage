@@ -50,16 +50,19 @@ export function getMainDomainUrl(): string {
  */
 export function navigateToRoute(route: string, router?: AppRouterInstance): void {
   const targetPath = `/${route}`;
+  console.log('Navigating to:', targetPath, 'isInIframe:', isInIframe());
   
   if (isInIframe()) {
     // 在iframe中，跳转父窗口
     const mainDomainUrl = getMainDomainUrl();
     const targetUrl = `${mainDomainUrl}${targetPath}`;
+    console.log('iframe navigation to:', targetUrl);
     
     try {
       // 尝试直接修改父窗口location
       window.top!.location.href = targetUrl;
     } catch (e) {
+      console.log('Cross-origin restriction, using postMessage');
       // 如果跨域限制，使用postMessage通知父窗口
       window.parent.postMessage(
         {
@@ -72,6 +75,7 @@ export function navigateToRoute(route: string, router?: AppRouterInstance): void
     }
   } else {
     // 不在iframe中，使用正常路由跳转
+    console.log('Normal navigation');
     if (router) {
       router.push(targetPath);
     } else {

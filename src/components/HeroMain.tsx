@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { useTheme } from '../context/ThemeContext';
 import { useCallback } from 'react';
+import { usePathname } from 'next/navigation';
+import { getSaasUrlByRoute } from '../config/routes';
 
 // 主题ID到SaaS页面和功能类型的映射
 const themeToSaasConfigMap: Record<string, { page: string; variationType?: string; tab?: string }> = {
@@ -22,6 +24,10 @@ const themeToSaasConfigMap: Record<string, { page: string; variationType?: strin
 export default function HeroMain() {
   const { currentTheme } = useTheme();
   const { heroMain } = currentTheme;
+  const pathname = usePathname();
+  
+  // 获取当前页面对应的SaaS URL
+  const currentSaasUrl = getSaasUrlByRoute(pathname.replace('/', ''));
 
   // 根据当前域名确定SaaS环境
   const getSaasBaseUrl = useCallback(() => {
@@ -110,7 +116,7 @@ export default function HeroMain() {
         <div className="upload-showcase">
           <div className="upload-demo-area">
             <a 
-              href="https://create.creamoda.ai/" 
+              href={currentSaasUrl} 
               target="_blank" 
               rel="noopener noreferrer" 
               className="upload-demo-btn"

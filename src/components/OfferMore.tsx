@@ -2,10 +2,11 @@
 
 import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function OfferMore() {
   const router = useRouter();
+  const pathname = usePathname();
   const cardsContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -21,6 +22,91 @@ export default function OfferMore() {
     'AI Outfit Generator': 'outfit-generator',
     'AI Sketch to Image Converter': 'sketch-to-image'
   };
+
+  // 所有卡片配置
+  const allCards = [
+    {
+      title: 'Image Background Remover',
+      route: 'image-background-remover',
+      image: '/images/card/removes_bg.png',
+      cornerImage: '/images/card/removes_bg_rt.png',
+      description: 'Instantly cut out subjects and get a clean, transparent PNG in seconds.',
+      hasCorner: true,
+      hasEnhance: false,
+      hasColor: false
+    },
+    {
+      title: 'Image Background Changer',
+      route: 'image-background-changer',
+      image: '/images/card/changes_bg.png',
+      description: 'Replace any background with custom colors, images, or scenes.',
+      hasCorner: false,
+      hasEnhance: false,
+      hasColor: false
+    },
+    {
+      title: 'Image Enhancer',
+      route: 'image-enhancer',
+      image: '/images/card/upscaless.png',
+      enhanceImage: '/images/card/upscale_r.png',
+      description: 'Boost image resolution up to 2× without losing sharpness or detail.',
+      hasCorner: false,
+      hasEnhance: true,
+      hasColor: false
+    },
+    {
+      title: 'AI Image Changer',
+      route: 'image-changer',
+      image: '/images/card/partial_mod.png',
+      description: 'Edit or replace only the areas you select, keeping the rest untouched.',
+      hasCorner: false,
+      hasEnhance: false,
+      hasColor: false
+    },
+    {
+      title: 'Image Color Changer',
+      route: 'image-color-changer',
+      image: '/images/card/change_colors.png',
+      colorImage: '/images/card/change_color_r.png',
+      description: 'Instantly swap product or object colors with realistic results.',
+      hasCorner: false,
+      hasEnhance: false,
+      hasColor: true
+    },
+    {
+      title: 'AI Virtual Try-On',
+      route: 'virtual-try-on',
+      image: '/images/card/virtual_try.png',
+      description: 'Generate lifelike model images wearing your products, cutting shoot costs and boosting sales.',
+      hasCorner: false,
+      hasEnhance: false,
+      hasColor: false
+    },
+    {
+      title: 'AI Outfit Generator',
+      route: 'outfit-generator',
+      image: '/images/card/designs.png',
+      description: 'Generate and customize fashion outfits — swap fabrics, tweak styles, redesign patterns, all in one tool.',
+      hasCorner: false,
+      hasEnhance: false,
+      hasColor: false
+    },
+    {
+      title: 'AI Sketch to Image Converter',
+      route: 'sketch-to-image',
+      image: '/images/card/sketch_design.png',
+      description: 'Turn garment sketches into realistic images for prototyping and presentations.',
+      hasCorner: false,
+      hasEnhance: false,
+      hasColor: false
+    }
+  ];
+
+  // 过滤掉当前页面对应的卡片
+  const filteredCards = allCards.filter(card => {
+    const currentRoute = pathname.replace('/', '');
+    return card.route !== currentRoute;
+  });
 
   // 处理卡片点击事件
   const handleCardClick = (cardTitle: string) => {
@@ -89,162 +175,61 @@ export default function OfferMore() {
         </div>
       </div>
       <div className="offer-more-cards" ref={cardsContainerRef}>
-        <div className="offer-card offer-card-with-corner" onClick={() => handleCardClick('Image Background Remover')} style={{ cursor: 'pointer' }}>
-          <div className="corner-image">
-            <Image
-              src="/images/card/removes_bg_rt.png"
-              alt="Background Remover Corner"
-              width={120}
-              height={180}
-              className="corner-img"
-            />
-          </div>
-          <div className="offer-card-image offer-card-image-transparent">
-            <Image
-              src="/images/card/removes_bg.png"
-              alt="Image Background Remover"
-              width={280}
-              height={201}
-              className="card-img"
-            />
-          </div>
-          <div className="offer-card-content">
-            <h3 className="offer-card-title">Image Background Remover</h3>
-            <p className="offer-card-desc">Instantly cut out subjects and get a clean, transparent PNG in seconds.</p>
-          </div>
-        </div>
-        <div className="offer-card" onClick={() => handleCardClick('Image Background Changer')} style={{ cursor: 'pointer' }}>
-          <div className="offer-card-image">
-            <Image
-              src="/images/card/changes_bg.png"
-              alt="Image Background Changer"
-              width={280}
-              height={201}
-              className="card-img"
-            />
-          </div>
-          <div className="offer-card-content">
-            <h3 className="offer-card-title">Image Background Changer</h3>
-            <p className="offer-card-desc">Replace any background with custom colors, images, or scenes.</p>
-          </div>
-        </div>
-        <div className="offer-card offer-card-with-enhance" onClick={() => handleCardClick('Image Enhancer')} style={{ cursor: 'pointer' }}>
-          <div className="offer-card-image">
-            <Image
-              src="/images/card/upscaless.png"
-              alt="Image Enhancer"
-              width={280}
-              height={201}
-              className="card-img"
-            />
-            {/* <div className="enhance-left">
+        {filteredCards.map((card, index) => (
+          <div 
+            key={card.route}
+            className={`offer-card ${card.hasCorner ? 'offer-card-with-corner' : ''} ${card.hasEnhance ? 'offer-card-with-enhance' : ''} ${card.hasColor ? 'offer-card-with-color' : ''}`} 
+            onClick={() => handleCardClick(card.title)} 
+            style={{ cursor: 'pointer' }}
+          >
+            {card.hasCorner && (
+              <div className="corner-image">
+                <Image
+                  src={card.cornerImage!}
+                  alt={`${card.title} Corner`}
+                  width={120}
+                  height={180}
+                  className="corner-img"
+                />
+              </div>
+            )}
+            <div className={`offer-card-image ${card.hasCorner ? 'offer-card-image-transparent' : ''}`}>
               <Image
-                src="/images/card/upscale_l.png"
-                alt="Before Enhancement"
-                width={75}
-                height={75}
-                className="enhance-img"
+                src={card.image}
+                alt={card.title}
+                width={280}
+                height={201}
+                className="card-img"
               />
-            </div> */}
-            <div className="enhance-right">
-              <Image
-                src="/images/card/upscale_r.png"
-                alt="After Enhancement"
-                width={70}
-                height={70}
-                className="enhance-img"
-              />
+              {card.hasEnhance && (
+                <div className="enhance-right">
+                  <Image
+                    src={card.enhanceImage!}
+                    alt="After Enhancement"
+                    width={70}
+                    height={70}
+                    className="enhance-img"
+                  />
+                </div>
+              )}
+              {card.hasColor && (
+                <div className="color-change-right">
+                  <Image
+                    src={card.colorImage!}
+                    alt="Color Change Effect"
+                    width={110}
+                    height={120}
+                    className="color-change-img"
+                  />
+                </div>
+              )}
+            </div>
+            <div className="offer-card-content">
+              <h3 className="offer-card-title">{card.title}</h3>
+              <p className="offer-card-desc">{card.description}</p>
             </div>
           </div>
-          <div className="offer-card-content">
-            <h3 className="offer-card-title">Image Enhancer</h3>
-            <p className="offer-card-desc">Boost image resolution up to 2× without losing sharpness or detail.</p>
-          </div>
-        </div>
-        <div className="offer-card" onClick={() => handleCardClick('AI Image Changer')} style={{ cursor: 'pointer' }}>
-          <div className="offer-card-image">
-            <Image
-              src="/images/card/partial_mod.png"
-              alt="AI Image Changer"
-              width={280}
-              height={201}
-              className="card-img"
-            />
-          </div>
-          <div className="offer-card-content">
-            <h3 className="offer-card-title">AI Image Changer</h3>
-            <p className="offer-card-desc">Edit or replace only the areas you select, keeping the rest untouched.</p>
-          </div>
-        </div>
-        <div className="offer-card offer-card-with-color" onClick={() => handleCardClick('Image Color Changer')} style={{ cursor: 'pointer' }}>
-          <div className="offer-card-image">
-            <Image
-              src="/images/card/change_colors.png"
-              alt="Image Color Changer"
-              width={280}
-              height={201}
-              className="card-img"
-            />
-            <div className="color-change-right">
-              <Image
-                src="/images/card/change_color_r.png"
-                alt="Color Change Effect"
-                width={110}
-                height={120}
-                className="color-change-img"
-              />
-            </div>
-          </div>
-          <div className="offer-card-content">
-            <h3 className="offer-card-title">Image Color Changer</h3>
-            <p className="offer-card-desc">Instantly swap product or object colors with realistic results.</p>
-          </div>
-        </div>
-        <div className="offer-card" onClick={() => handleCardClick('AI Virtual Try-On')} style={{ cursor: 'pointer' }}>
-          <div className="offer-card-image">
-            <Image
-              src="/images/card/virtual_try.png"
-              alt="AI Virtual Try-On"
-              width={280}
-              height={201}
-              className="card-img"
-            />
-          </div>
-          <div className="offer-card-content">
-            <h3 className="offer-card-title">AI Virtual Try-On</h3>
-            <p className="offer-card-desc">Generate lifelike model images wearing your products, cutting shoot costs and boosting sales.</p>
-          </div>
-        </div>
-        <div className="offer-card" onClick={() => handleCardClick('AI Outfit Generator')} style={{ cursor: 'pointer' }}>
-          <div className="offer-card-image">
-            <Image
-              src="/images/card/designs.png"
-              alt="AI Outfit Generator"
-              width={280}
-              height={201}
-              className="card-img"
-            />
-          </div>
-          <div className="offer-card-content">
-            <h3 className="offer-card-title">AI Outfit Generator</h3>
-            <p className="offer-card-desc">Generate and customize fashion outfits — swap fabrics, tweak styles, redesign patterns, all in one tool.</p>
-          </div>
-        </div>
-        <div className="offer-card" onClick={() => handleCardClick('AI Sketch to Image Converter')} style={{ cursor: 'pointer' }}>
-          <div className="offer-card-image">
-            <Image
-              src="/images/card/sketch_design.png"
-              alt="AI Sketch to Image Converter"
-              width={280}
-              height={201}
-              className="card-img"
-            />
-          </div>
-          <div className="offer-card-content">
-            <h3 className="offer-card-title">AI Sketch to Image Converter</h3>
-            <p className="offer-card-desc">Turn garment sketches into realistic images for prototyping and presentations.</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

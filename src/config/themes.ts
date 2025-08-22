@@ -504,7 +504,7 @@ export const themes: Record<string, ThemeConfig> = {
     heroMain: {
       title: 'AI Virtual Try-On',
       subtitle: 'Immediately imagine the fit of any clothing with realistic pose adjustments - perfect for shoppers, designers, and brands. No physical samples required.',
-      mainImage: '/images/hero/virtual_try/virtual_tryes.png',
+      mainImage: '/images/hero/virtual_try/virtuals_trye.png',
       uploadText: 'Try Now',
       uploadSubText: 'Or drop a product image or URL',
       demoImages: [
@@ -628,7 +628,7 @@ export const themes: Record<string, ThemeConfig> = {
     heroMain: {
       title: 'AI Outfit Generator',
       subtitle: 'Turn Ideas into Art Instantly – Generate unique images from text or transform your photos with AI-powered creativity. No design skills required!',
-      mainImage: '/images/hero/outfit_generator/outfit_generator.png',
+      mainImage: '/images/hero/outfit_generator/outfit_generators.png',
       uploadText: 'Try Now',
       uploadSubText: 'Or drop a design reference or URL',
       demoImages: [

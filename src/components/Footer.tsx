@@ -26,7 +26,7 @@ export default function Footer() {
           {/* Social icons */}
           <div className="footer-social">
             <a 
-              href="https://youtube.com/@chimer-ai?si=Tio5Tlt-hXv3ofBH" 
+              href="https://youtube.com/@chimer-ai" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="social-button"

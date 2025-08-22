@@ -171,7 +171,7 @@ export default function Hero() {
                   {/* <h3 className="category-title">Design Kit</h3> */}
                   <div className="category-items-container">
                     <div className="category-items">
-                      <Link href="/sketch-to-image" className="tool-item">AI Outfit Generator</Link>
+                      <Link href="/outfit-generator" className="tool-item">AI Outfit Generator</Link>
                       <Link href="/sketch-to-image" className="tool-item">AI Sketch to Image Converter</Link>
                       {/* <Link href="/sketch-to-image" className="tool-item">Video Virtual Try-on</Link>
                       <Link href="/sketch-to-image" className="tool-item">Plus-Size Try-on Model</Link>

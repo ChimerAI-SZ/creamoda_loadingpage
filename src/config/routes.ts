@@ -32,6 +32,23 @@ export function getRouteByTheme(themeId: string): string {
   return themeToRouteMap[themeId] || 'image-background-remover';
 }
 
+// 路由到SaaS URL的映射
+export const routeToSaasUrlMap: Record<string, string> = {
+  'image-background-remover': 'https://create.creamoda.ai/magic-kit',
+  'image-background-changer': 'https://create.creamoda.ai/magic-kit',
+  'image-enhancer': 'https://create.creamoda.ai/magic-kit',
+  'image-changer': 'https://create.creamoda.ai/magic-kit',
+  'image-color-changer': 'https://create.creamoda.ai/magic-kit',
+  'virtual-try-on': 'https://create.creamoda.ai/virtual-try-on',
+  'outfit-generator': 'https://create.creamoda.ai/',
+  'sketch-to-image': 'https://create.creamoda.ai/'
+};
+
+// 根据路由获取SaaS URL
+export function getSaasUrlByRoute(route: string): string {
+  return routeToSaasUrlMap[route] || 'https://create.creamoda.ai/magic-kit';
+}
+
 // 获取所有可用路由
 export function getAllRoutes(): string[] {
   return Object.keys(routeToThemeMap);

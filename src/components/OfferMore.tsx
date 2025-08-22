@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import { handleNavigation } from '../utils/navigation';
 
 export default function OfferMore() {
   const router = useRouter();
@@ -112,7 +113,7 @@ export default function OfferMore() {
   const handleCardClick = (cardTitle: string) => {
     const route = cardRouteMapping[cardTitle];
     if (route) {
-      router.push(`/${route}`);
+      handleNavigation(route, router);
     }
   };
 

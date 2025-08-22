@@ -25,11 +25,16 @@ export default function Footer() {
           
           {/* Social icons */}
           <div className="footer-social">
-            <button className="social-button">
+            <a 
+              href="https://youtube.com/@chimer-ai?si=Tio5Tlt-hXv3ofBH" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="social-button"
+            >
               <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
                 <path d="M21.67 2.369C21.505 1.742 21.024 1.261 20.397 1.096C18.646 0.625 11.5 0.625 11.5 0.625C11.5 0.625 4.354 0.625 2.603 1.096C1.976 1.261 1.495 1.742 1.33 2.369C0.859 4.12 0.859 7.75 0.859 7.75C0.859 7.75 0.859 11.38 1.33 13.131C1.495 13.758 1.976 14.239 2.603 14.404C4.354 14.875 11.5 14.875 11.5 14.875C11.5 14.875 18.646 14.875 20.397 14.404C21.024 14.239 21.505 13.758 21.67 13.131C22.141 11.38 22.141 7.75 22.141 7.75C22.141 7.75 22.141 4.12 21.67 2.369ZM9.167 11.083V4.417L15.083 7.75L9.167 11.083Z" fill="currentColor"/>
               </svg>
-            </button>
+            </a>
 
             <a 
               href="https://www.instagram.com/creamoda.ai/" 
@@ -42,11 +47,16 @@ export default function Footer() {
               </svg>
             </a>
 
-            <button className="social-button">
+            <a 
+              href="https://x.com/ai_creamoda" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="social-button"
+            >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/>
               </svg>
-            </button>
+            </a>
             
             <a 
               href="https://www.tiktok.com/@creamoda.ai" 
@@ -68,7 +78,7 @@ export default function Footer() {
             <h3 className="footer-section-title">AI Features</h3>
             <div className="footer-features">
               <div className="feature-group">
-                <Link href="/outfit-generator" className="feature-item">Text to Image</Link>
+                <a href="https://create.creamoda.ai/" className="feature-item">Text to Image</a>
                 <a href="https://create.creamoda.ai/" className="feature-item">Copy Style</a>
                 <a href="https://create.creamoda.ai/" className="feature-item">Mix 2 Images</a>
                 <a href="https://create.creamoda.ai/" className="feature-item">Change Clothes</a>

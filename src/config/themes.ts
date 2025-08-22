@@ -626,7 +626,7 @@ export const themes: Record<string, ThemeConfig> = {
     id: 'outfit_generator',
     name: 'AI服装生成',
     heroMain: {
-      title: 'AI Image Generator',
+      title: 'AI Outfit Generator',
       subtitle: 'Turn Ideas into Art Instantly – Generate unique images from text or transform your photos with AI-powered creativity. No design skills required!',
       mainImage: '/images/hero/outfit_generator/outfit_generator.png',
       uploadText: 'Upload Reference',

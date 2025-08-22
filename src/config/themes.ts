@@ -18,7 +18,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     fusionGuide: {
-      title: 'How to achieve style fusion?',
+      title: 'How to Remove Image Background in One Step?',
       cards: [
         {
           icon: '/images/feature/picture.png',
@@ -38,7 +38,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     whyChoose: {
-      title: 'Why Choose creamoda?',
+      title: 'Why Choose Creamoda?',
       cards: [
         {
           title: 'Professional-Quality Precision for Complex Edges',
@@ -142,7 +142,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     fusionGuide: {
-      title: 'How to change backgrounds effortlessly?',
+      title: 'How to Change Image Background Using AI?',
       cards: [
         {
           icon: '/images/feature/picture.png',
@@ -162,7 +162,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     whyChoose: {
-      title: 'Why Choose creamoda?',
+      title: 'Why Choose Creamoda?',
       cards: [
         {
           title: 'Instant Professional Background Replacement',
@@ -266,7 +266,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     fusionGuide: {
-      title: 'How to enhance image quality?',
+      title: 'How to Upscale Images Without Any Quality Loss?',
       cards: [
         {
           icon: '/images/feature/picture.png',
@@ -286,7 +286,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     whyChoose: {
-      title: 'Why Choose creamoda?',
+      title: 'Why Choose Creamoda?',
       cards: [
         {
           title: 'Pixel-Perfect AI Reconstruction',
@@ -390,7 +390,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     fusionGuide: {
-      title: 'How to change colors intelligently?',
+      title: 'How to Change Image Color?',
       cards: [
         {
           icon: '/images/feature/picture.png',
@@ -410,7 +410,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     whyChoose: {
-      title: 'Why Choose creamoda?',
+      title: 'Why Choose Creamoda?',
       cards: [
         {
           title: 'Pixel-Perfect Color Accuracy',
@@ -515,7 +515,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     fusionGuide: {
-      title: 'How to create virtual try-ons?',
+      title: 'How to Generate Model Try-on Images From Apparel?',
       cards: [
         {
           icon: '/images/feature/picture.png',
@@ -535,7 +535,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     whyChoose: {
-      title: 'Why Choose creamoda?',
+      title: 'Why Choose Creamoda?',
       cards: [
         {
           title: 'Realistic Fit Simulation',
@@ -639,7 +639,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     fusionGuide: {
-      title: 'How to generate custom outfits?',
+      title: 'How to Design Fashion Items Online?',
       cards: [
         {
           icon: '/images/feature/picture.png',
@@ -659,7 +659,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     whyChoose: {
-      title: 'Why Choose creamoda?',
+      title: 'Why Choose Creamoda?',
       cards: [
         {
           title: 'Unlimited Creativity for Diverse Needs',
@@ -764,7 +764,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     fusionGuide: {
-      title: 'How to convert sketches to images?',
+      title: 'How to Tranfrom Sketch Images to Real Design?',
       cards: [
         {
           icon: '/images/feature/picture.png',
@@ -784,7 +784,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     whyChoose: {
-      title: 'Why Choose creamoda?',
+      title: 'Why Choose Creamoda?',
       cards: [
         {
           title: 'Intelligent Draft Optimization',
@@ -888,7 +888,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     fusionGuide: {
-      title: 'How to edit images selectively?',
+      title: 'How to Change Images Easily With One Click?',
       cards: [
         {
           icon: '/images/feature/picture.png',
@@ -908,7 +908,7 @@ export const themes: Record<string, ThemeConfig> = {
       ]
     },
     whyChoose: {
-      title: 'Why Choose creamoda?',
+      title: 'Why Choose Creamoda?',
       cards: [
         {
           title: 'AI-Powered Detail Preservation',

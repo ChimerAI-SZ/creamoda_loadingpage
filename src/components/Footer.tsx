@@ -67,34 +67,34 @@ export default function Footer() {
             <h3 className="footer-section-title">AI Features</h3>
             <div className="footer-features">
               <div className="feature-group">
-                <div className="feature-item">text to image</div>
-                <div className="feature-item">copy style</div>
-                <div className="feature-item">mix 2 images</div>
-                <div className="feature-item">change clothes</div>
-                <div className="feature-item">fabric to design</div>
-                <div className="feature-item">sketch to design</div>
+                <div className="feature-item">Text to Image</div>
+                <div className="feature-item">Copy Style</div>
+                <div className="feature-item">Mix 2 Images</div>
+                <div className="feature-item">Change Clothes</div>
+                <div className="feature-item">Fabric to Design</div>
+                <div className="feature-item">Sketch to Design</div>
               </div>
               
               <div className="feature-group">
-                <div className="feature-item">change style</div>
-                <div className="feature-item">change fabric</div>
-                <div className="feature-item">change printing</div>
-                <div className="feature-item">style fusion</div>
+                <div className="feature-item">Change Style</div>
+                <div className="feature-item">Change Fabric</div>
+                <div className="feature-item">Change Printing</div>
+                <div className="feature-item">Style Fusion</div>
               </div>
               
               <div className="feature-group">
-                <div className="feature-item">virtual try-on</div>
-                <div className="feature-item">change pose</div>
+                <div className="feature-item">Virtual Try-on</div>
+                <div className="feature-item">Change Pose</div>
               </div>
 
               <div className="feature-group">
-                <div className="feature-item">change color</div>
-                <div className="feature-item">change background</div>
-                <div className="feature-item">remove background</div>
-                <div className="feature-item">partial modification</div>
-                <div className="feature-item">upscale</div>
-                <div className="feature-item">pattern extraction</div>
-                <div className="feature-item">pattern application</div>
+                <div className="feature-item">Change Color</div>
+                <div className="feature-item">Change Background</div>
+                <div className="feature-item">Remove Background</div>
+                <div className="feature-item">Partial Modification</div>
+                <div className="feature-item">Upscale</div>
+                <div className="feature-item">Pattern Extraction</div>
+                <div className="feature-item">Pattern Application</div>
               </div>
             </div>
           </div>

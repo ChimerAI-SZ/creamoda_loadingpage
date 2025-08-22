@@ -170,18 +170,18 @@ export default function Hero() {
                   {/* <h3 className="category-title">Design Kit</h3> */}
                   <div className="category-items-container">
                     <div className="category-items">
-                      <a href="https://create.creamoda.ai/" className="tool-item">text to image</a>
-                      <a href="https://create.creamoda.ai/" className="tool-item">copy style</a>
-                      <a href="https://create.creamoda.ai/" className="tool-item">mix 2 images</a>
-                      <a href="https://create.creamoda.ai/" className="tool-item">change clothes</a>
-                      <a href="https://create.creamoda.ai/" className="tool-item">fabric to design</a>
-                      <a href="https://create.creamoda.ai/" className="tool-item">sketch to design</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">Text to Image</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">Copy Style</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">Mix 2 Images</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">Change Clothes</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">Fabric to Design</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">Sketch to Design</a>
                     </div>
                     <div className="category-items">
-                      <a href="https://create.creamoda.ai/" className="tool-item">change style</a>
-                      <a href="https://create.creamoda.ai/" className="tool-item">change fabric</a>
-                      <a href="https://create.creamoda.ai/" className="tool-item">change printing</a>
-                      <a href="https://create.creamoda.ai/" className="tool-item">style fusion</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">Change Style</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">Change Fabric</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">Change Printing</a>
+                      <a href="https://create.creamoda.ai/" className="tool-item">Style Fusion</a>
                     </div>
                   </div>
                 </div>
@@ -200,8 +200,8 @@ export default function Hero() {
                 <div className="tools-category">
                   {/* <h3 className="category-title">Virtual Tryon</h3> */}
                   <div className="category-items">
-                    <a href="https://create.creamoda.ai/virtual-try-on" className="tool-item">virtual try-on</a>
-                    <a href="https://create.creamoda.ai/virtual-try-on" className="tool-item">change pose</a>
+                    <a href="https://create.creamoda.ai/virtual-try-on" className="tool-item">Virtual Try-on</a>
+                    <a href="https://create.creamoda.ai/virtual-try-on" className="tool-item">Change Pose</a>
                   </div>
                 </div>
               </div>
@@ -220,14 +220,14 @@ export default function Hero() {
                   {/* <h3 className="category-title">Magic Kit</h3> */}
                   <div className="category-items-container">
                     <div className="category-items">
-                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">change color</a>
-                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">change background</a>
-                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">remove background</a>
-                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">partial modification</a>
-                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">upscale</a>
+                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">Change Color</a>
+                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">Change Background</a>
+                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">Remove Background</a>
+                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">Partial Modification</a>
+                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">Upscale</a>
                     </div>
                     <div className="category-items">
-                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">pattern extraction</a>
+                      <a href="https://create.creamoda.ai/magic-kit" className="tool-item">Pattern Extraction</a>
                       <a href="https://create.creamoda.ai/magic-kit" className="tool-item">pattern application</a>
                     </div>
                   </div>

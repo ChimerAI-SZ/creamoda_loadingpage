@@ -294,9 +294,12 @@ export default function Hero() {
 
         {/* 主要内容 - 使用子组件 */}
         <HeroMain />
-        <FusionGuide />
-        <WhyChoose />
-        <OfferMore />
+        {/* 只在子页面显示 FusionGuide 组件，首页不显示 */}
+        {pathname !== '/' && <FusionGuide />}
+        {/* 只在子页面显示 WhyChoose 组件，首页不显示 */}
+        {pathname !== '/' && <WhyChoose />}
+        {/* 只在子页面显示 We Offer More 组件，首页不显示 */}
+        {pathname !== '/' && <OfferMore />}
       </div>
     </section>
   );

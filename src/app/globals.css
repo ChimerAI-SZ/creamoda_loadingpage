@@ -16,6 +16,32 @@
   font-display: swap;
 }
 
+/* 独立的 Regular 字体族，避免权重匹配到 Ultrabold */
+@font-face {
+  font-family: 'Neue Machina Regular';
+  src: url('/fonts/NeueMachina-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Homepage hero fonts */
+@font-face {
+  font-family: 'Avenir Black 3';
+  src: url('/fonts/AVENIR-BLACK-3.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat Alternates SemiBold';
+  src: url('/fonts/MontserratAlternates-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
   :root {
     --background: #0a0a0a;
   --foreground: #ffffff;
@@ -451,9 +477,509 @@ body {
 /* 主要内容 */
 .hero-main {
   text-align: center;
-  padding: 80px 20px 80px;
+  padding: 100px 20px 20px;
   min-height: calc(100vh - 160px);
-  margin-top: 140px;
+  margin-top: 200px;
+}
+
+/* Homepage centered hero */
+.homepage-hero-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  min-height: calc(100vh - 160px);
+}
+
+.homepage-hero-logo-img {
+  width: min(70vw, 900px);
+  height: auto;
+}
+
+.homepage-tagline {
+  /* 与首页 Logo 保持同样的可视宽度并居中，使左边缘对齐 */
+  width: min(70vw, 900px);
+  margin: 0 auto;
+  text-align: left;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.homepage-tagline p {
+  margin: 0;
+  font-family: 'Avenir Black 3', 'Neue Machina', system-ui, -apple-system, sans-serif;
+  font-weight: 900;
+  font-size: clamp(18px, 2.4vw, 28px);
+}
+
+.homepage-cta {
+  margin-top: 100px;
+}
+
+.homepage-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #6b4ff6;
+  color: white;
+  border-radius: 9999px;
+  padding: 14px 28px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(107, 79, 246, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Montserrat Alternates SemiBold', system-ui, -apple-system, sans-serif;
+  font-size: clamp(14px, 1.8vw, 18px);
+}
+
+.homepage-cta-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(107, 79, 246, 0.45);
+}
+
+/* Stacked Cards */
+.stacked-cards-section {
+  margin-top: 300px;
+  padding: 0 0 40px 0;
+}
+
+.stacked-cards-container {
+  position: relative;
+  width: min(1340px, 92vw);
+  margin: 0 auto;
+  height: 560px;
+}
+
+.stacked-card {
+  position: absolute;
+  top: 0;
+  transform-origin: bottom center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.stacked-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 具体位置与旋转（按参考图近似） */
+.stacked-card-1 { left: -40px;   width: 360px; height: 520px; transform: rotate(-24deg) translateY(72px); z-index: 4;}
+.stacked-card-2 { left: 250px; width: 360px; height: 540px; transform: rotate(-10deg) translateY(-20px); z-index: 3;}
+.stacked-card-3 { left: 550px; width: 380px; height: 560px; transform: rotate(0deg) translateY(-40px); z-index: 2; }
+.stacked-card-4 { left: 800px; width: 360px; height: 540px; transform: rotate(16deg) translateY(0px); z-index: 1;}
+.stacked-card-5 { left: 1100px; width: 360px; height: 520px; transform: rotate(30deg) translateY(112px); }
+
+.stacked-cards-caption {
+  text-align: center;
+  font-family: 'Avenir Black 3', 'Neue Machina', system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  font-size: clamp(18px, 2.6vw, 30px);
+  color: white;
+  margin: 40px 0 0 0;
+}
+
+/* Feature Overview */
+.feature-overview-section {
+  margin: 120px 0 100px 0;
+  width: 100vw; /* 占据整页宽度 */
+  padding-left: 200px; /* 右移一点 */
+  padding-right: 60px;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+}
+
+.feature-overview-title {
+  font-family: 'Neue Machina Regular', 'Neue Machina', system-ui, -apple-system, sans-serif;
+  font-weight: 600; /* 使用 Regular 的合成粗体，较 800 更细 */
+  font-synthesis: weight;
+  font-size: clamp(36px, 6vw, 80px);
+  color: white;
+  margin: 0 0 24px 0;
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 与图片一起居左 */
+  padding-left: 0; /* 标题与模块左基线对齐 */
+  line-height: 2; /* 收紧整体行高 */
+  gap: 0; /* 先去掉容器gap，交给第二行做负margin */
+}
+
+/* 进一步收紧每行的行高，避免上下间距过大 */
+.feature-overview-title span { display: block; line-height: 0.9; margin: 0; }
+.feature-overview-title span + span { margin-top: -0.18em; }
+
+.feature-overview-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 60px 4px 12px 96px; /* 更大左侧内边距，给首卡叠加图留出空间 */
+  scroll-padding-left: 108px; /* 吸附预留空间 */
+  scroll-snap-type: x mandatory;
+}
+
+.feature-card {
+  flex: 0 0 55vw;
+  max-width: 520px;
+  border-radius: 24px;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
+/* 第一张：背景移除的左上角叠加图 */
+.feature-card-remover {
+  position: relative;
+  overflow: visible; /* 允许叠加图超出容器 */
+  z-index: 5; /* 保证在相邻卡片之上 */
+}
+
+.feature-card-remover .feature-img {
+  border-radius: 24px;
+}
+
+.feature-overlay {
+  position: absolute;
+  left: -24px;
+  top: -24px;
+  width: 46%;
+  max-width: 150px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.feature-overlay-img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.feature-overview-track .feature-card:first-child {
+  transform: none;
+  position: relative;
+  z-index: 1;
+  flex-basis: calc(55vw - 30px);
+  max-width: 480px;
+  scroll-margin-left: 108px; /* 首卡吸附时预留空间 */
+}
+
+/* 第三张卡片略增大（更高） */
+.feature-overview-track .feature-card:nth-child(3) {
+  flex-basis: calc(55vw + 20px);
+  max-width: 560px;
+  transform: translateY(-7px);
+}
+
+/* 倒数第二张卡片与其他卡片保持一致尺寸 */
+.feature-overview-track .feature-card:nth-last-child(2) {
+  flex-basis: 55vw;
+  max-width: 520px;
+  transform: none;
+}
+
+.feature-img { width: 100%; height: auto; display: block; }
+
+.feature-card-caption {
+  text-align: center;
+  font-family: 'Avenir Black 3', 'Neue Machina', system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  font-size: clamp(14px, 2.2vw, 22px);
+  color: white;
+  margin-top: 12px;
+}
+
+@media (min-width: 1024px) {
+  .feature-card { flex-basis: 420px; max-width: 420px; }
+  .feature-overview-track { padding-top: 70px; padding-left: 120px; scroll-padding-left: 132px; }
+  .feature-overview-title { padding-left: 0; }
+  .feature-overview-track .feature-card:first-child { transform: none; flex-basis: 380px; max-width: 380px; z-index: 1; }
+  .feature-overview-track .feature-card:first-child { scroll-margin-left: 132px; }
+  .feature-overview-track .feature-card:nth-child(3) { flex-basis: 460px; max-width: 460px; transform: translateY(-10px); }
+  .feature-overview-track .feature-card:nth-last-child(2) { flex-basis: 420px; max-width: 420px; transform: none; }
+  .feature-overlay { left: -30px; top: -30px; width: 48%; }
+}
+
+/* Circle Decorative Section */
+.circle-deco-section {
+  width: 100vw;
+  padding: 24px 60px 24px 96px; /* 与 Feature Overview 左基线 96px 对齐 */
+  position: relative;
+  min-height: 150px; /* 保证有可视高度 */
+  z-index: 1;
+}
+
+.circle-deco-title {
+  font-family: 'Neue Machina Regular', 'Neue Machina', system-ui, -apple-system, sans-serif;
+  font-weight: 600; /* 使用 Regular 的合成粗体，较 800 更细 */
+  font-synthesis: weight;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 0; /* 统一左基线 */
+  margin: 0 0 8px 0;
+  font-size: clamp(36px, 6vw, 80px);
+  line-height: 1.05;
+}
+
+@media (min-width: 1024px) {
+  .circle-deco-title { padding-left: 104px; }
+  .circle-deco-wrap { margin-left: -300px; }
+}
+
+@media (max-width: 900px) {
+  /* Feature Overview 在小屏向内收紧，避免溢出 */
+  .feature-overview-section { padding-left: 0; padding-right: 12px; margin: 80px 0 60px 0; }
+  .feature-overview-title { padding-left: 0; margin-left: 0; }
+  .feature-overview-title { padding-left: 0; }
+
+  .circle-deco-section { padding-left: 24px; padding-right: 16px; }
+  .circle-deco-title { padding-left: 24px; font-size: clamp(28px, 7vw, 52px); }
+  .circle-deco-row { flex-direction: column; gap: 20px; align-items: center; }
+  /* 移动端：隐藏圆圈与桌面内容，仅展示简化步骤卡片 */
+  .circle-deco-wrap { display: none !important; }
+  .circle-content { display: none !important; }
+  .circle-content-icon { display: none !important; }
+  .circle-content-mobile { 
+    display: flex !important; 
+    flex-direction: column; 
+    gap: 14px; 
+    width: 100%; 
+    max-width: calc(100vw - 48px);
+    padding: 0 12px;
+    margin-top: 16px;
+    color: #ffffff;
+  }
+  .circle-step { 
+    display: grid; 
+    grid-template-columns: 44px 1fr; 
+    gap: 12px; 
+    align-items: center; 
+    padding: 12px 14px; 
+    border: 1px solid rgba(255,255,255,0.12); 
+    background: rgba(255,255,255,0.04); 
+    border-radius: 12px; 
+  }
+  .circle-step-index { 
+    width: 44px; 
+    height: 44px; 
+    border-radius: 9999px; 
+    background: #ffffff; 
+    color: #0a0a0a !important; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-weight: 800; 
+    font-size: 14px; 
+    opacity: 1 !important;
+  }
+  .circle-step-title { font-size: clamp(16px, 5vw, 20px); margin: 0; text-align: left; color: #ffffff; }
+  .circle-step-desc { font-size: clamp(12px, 4vw, 15px); margin: 4px 0 0 0; text-align: left; color: rgba(255,255,255,0.8); }
+}
+
+.circle-deco-row { /* 新增：横向容器，左圆+右内容 并排 */
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start; /* 不再撑满到最右 */
+  gap: 300px; /* 稍微向右回退一些 */
+}
+
+.circle-deco-wrap {
+  margin-top: 80px;
+  position: relative;
+  width: 900px;
+  height: 900px;
+  margin-left: -350px; /* 向右微调 */
+}
+
+/* 右侧内容区域（随点位切换） */
+.circle-content {
+  margin-top: 80px;
+  position: relative; /* 回到常规流 */
+  max-width: 680px;
+  padding-left: 16px; /* 与圆保持适度间距 */
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: flex-end; /* 右对齐 */
+}
+
+.circle-content-icon {
+  width: 400px;
+  height: 370px;
+  margin-bottom: 8px;
+  align-self: flex-end;
+  margin-left: 0;
+  margin-right: 0; /* 移除向右偏移 */
+}
+
+.circle-content-title {
+  font-family: 'Neue Machina Regular', 'Neue Machina', system-ui, -apple-system, sans-serif;
+  font-weight: 700; /* 标题略粗 */
+  font-synthesis: weight;
+  font-size: clamp(22px, 3.2vw, 44px);
+  color: #ffffff;
+  margin: 0;
+  margin-top: 100px; /* 增加标题上边距 */
+  line-height: 1.35;
+  white-space: nowrap; /* 标题不换行 */
+  text-align: right;
+}
+
+.circle-content-desc {
+  font-family: 'Neue Machina Regular', 'Neue Machina', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  font-size: clamp(20px, 3vw, 32px);
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  line-height: 1.7;
+  margin-top: 50px;
+  max-width: 560px;
+  text-align: right;
+}
+
+/* Mobile simplified steps list (no icon) */
+.circle-content-mobile { display: none; }
+.circle-step { display: flex; gap: 12px; align-items: flex-start; }
+.circle-step-index { font-family: 'Neue Machina', system-ui, -apple-system, sans-serif; font-weight: 800; color: #fff; opacity: 0.9; }
+.circle-step-texts { display: flex; flex-direction: column; gap: 6px; }
+.circle-step-title { font-family: 'Neue Machina Regular', 'Neue Machina', system-ui, -apple-system, sans-serif; font-weight: 700; color: #fff; margin: 0; }
+.circle-step-desc { font-family: 'Neue Machina Regular', 'Neue Machina', system-ui, -apple-system, sans-serif; font-weight: 400; color: rgba(255,255,255,0.8); margin: 0; }
+
+.circle-deco-left {
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  /* 渐变边框（中间镂空） */
+  border: none;
+  background: linear-gradient(90deg, #0a0a0a 60%, #ffffff 100%);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 0);
+          mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 0);
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.9;
+  pointer-events: none; /* 不拦截点击，保证点可点 */
+  z-index: 0;
+}
+
+.circle-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  --r: 450px; /* 与 .circle-deco-left 半径一致 - 4px 描边 */
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #6f6f6f;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  font-family: 'Neue Machina', system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  color: rgba(255,255,255,0.55);
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* 左侧编号文本 */
+.circle-dot::before {
+  content: attr(data-label);
+  position: absolute;
+  right: calc(100% + 80px); /* 点左侧留白 */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 100px; /* 放大基础字号 */
+  line-height: 1;
+  transition: font-size 0.2s ease;
+}
+
+
+
+/* 其它编号较暗 */
+.circle-dot-1::before,
+.circle-dot-2::before,
+.circle-dot-3::before {
+  color: rgba(255,255,255,0.35);
+}
+
+/* 点击后点亮效果 */
+.active-dot {
+  background: #ffffff !important;
+  box-shadow: 0 0 16px rgba(255,255,255,0.6);
+}
+.active-dot::before {
+  color: #ffffff !important;
+  text-shadow: 0 0 16px rgba(255,255,255,0.6);
+  font-size: 100px; /* 高亮更大 */
+}
+
+/* 点位：沿圆右边框（外侧）从上到下分布，角度以圆心向右为 0deg */
+.circle-dot-1 { transform: translate(-50%, -50%) rotate(-40deg) translate(var(--r)) rotate(40deg); }
+.circle-dot-2 { transform: translate(-50%, -50%) rotate(0deg) translate(var(--r)) rotate(0deg); }
+.circle-dot-3 { transform: translate(-50%, -50%) rotate(42deg) translate(var(--r)) rotate(-42deg); }
+
+@media (max-width: 900px) {
+  .feature-card { flex-basis: 62vw; max-width: 62vw; }
+  .feature-overview-track { padding-top: 36px; padding-left: 72px; scroll-padding-left: 84px; }
+  .feature-overview-title { padding-left: 60px; font-size: clamp(28px, 7vw, 52px); }
+  .feature-card-caption { font-size: clamp(12px, 3.4vw, 18px); }
+  .feature-overview-track .feature-card:first-child { flex-basis: 58vw; max-width: 58vw; }
+  .feature-overview-track .feature-card:first-child { scroll-margin-left: 84px; }
+  .feature-overview-track .feature-card:nth-child(3) { flex-basis: 66vw; max-width: 66vw; transform: translateY(-4px); }
+  .feature-overview-track .feature-card:nth-last-child(2) { flex-basis: 62vw; max-width: 62vw; transform: none; }
+  .feature-overlay { left: -16px; top: -16px; width: 56%; }
+  .circle-deco-left { width: 90px; height: 90px; margin-left: 72px; }
+}
+@media (max-width: 900px) {
+  /* 改为横向可滑动的自适应布局 */
+  .stacked-cards-container {
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+    padding: 0 16px;
+    height: auto;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+  }
+
+  .stacked-card {
+    position: relative;
+    left: auto;
+    transform: none;
+    flex: 0 0 72vw; /* 每张卡片占屏宽约 72% */
+    aspect-ratio: 3 / 4;
+    height: auto;
+    border-radius: 16px;
+    scroll-snap-align: center;
+  }
+
+  .stacked-card-1,
+  .stacked-card-2,
+  .stacked-card-3,
+  .stacked-card-4,
+  .stacked-card-5 {
+    width: auto;
+    height: auto;
+  }
+
+  .stacked-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .stacked-cards-caption {
+    font-size: clamp(16px, 4.5vw, 22px);
+    margin-top: 20px;
+  }
 }
 
 .hero-title {
@@ -2041,6 +2567,401 @@ body {
   .faq-answer p {
     font-size: 13px;
   }
+}
+
+/* Fashion Showcase Section */
+.fashion-showcase-section {
+  margin: 120px 0 200px 0;
+  padding: 0 100px;
+  position: relative;
+}
+
+.fashion-showcase-title {
+  font-family: 'Neue Machina Regular', 'Neue Machina', system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  font-synthesis: weight;
+  font-size: clamp(36px, 6vw, 80px);
+  color: white;
+  margin: 0 0 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 0;
+  line-height: 1.05;
+}
+
+.fashion-showcase-title span {
+  display: block;
+  line-height: 0.9;
+}
+
+.fashion-showcase-title span + span {
+  margin-top: -0.18em;
+}
+
+.fashion-showcase-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 25px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  width: 80vw;
+}
+
+.fashion-showcase-column {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  flex: 1;
+  max-width: 450px;
+  min-width: 320px;
+}
+
+/* 第一列 - 中等偏移 */
+.fashion-showcase-column:nth-child(1) {
+  margin-top: 80px;
+}
+
+/* 第二列 - 无偏移（最高） */
+.fashion-showcase-column:nth-child(2) {
+  margin-top: 0px;
+}
+
+/* 第三列 - 最大偏移（最低） */
+.fashion-showcase-column:nth-child(3) {
+  margin-top: 120px;
+}
+
+.fashion-showcase-item {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+}
+
+.fashion-showcase-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.fashion-showcase-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* 响应式设计 */
+@media (max-width: 900px) {
+  .fashion-showcase-section {
+    padding: 0 20px;
+    margin: 80px 0;
+  }
+
+  .fashion-showcase-gallery {
+    gap: 18px;
+    width: 90vw;
+  }
+
+  .fashion-showcase-column {
+    max-width: none;
+    min-width: 250px;
+    gap: 18px;
+  }
+
+  /* 调整移动设备上的偏移 */
+  .fashion-showcase-column:nth-child(1) {
+    margin-top: 40px;
+  }
+
+  .fashion-showcase-column:nth-child(2) {
+    margin-top: 0px;
+  }
+
+  .fashion-showcase-column:nth-child(3) {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .fashion-showcase-gallery {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .fashion-showcase-column {
+    width: 100%;
+  }
+
+  /* 移动设备上取消列偏移 */
+  .fashion-showcase-column:nth-child(1),
+  .fashion-showcase-column:nth-child(2),
+  .fashion-showcase-column:nth-child(3) {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fashion-showcase-title { 
+    padding-left: 0px; 
+  }
+}
+
+@media (max-width: 900px) {
+  .fashion-showcase-title { 
+    padding-left: 24px; 
+    font-size: clamp(28px, 7vw, 52px); 
+  }
+}
+
+/* Beta Insights Section */
+.beta-insights-section {
+  margin: 120px 0 100px 0;
+  padding: 0 60px;
+  position: relative;
+}
+
+.beta-insights-title {
+  font-family: 'Neue Machina Regular', 'Neue Machina', system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  font-synthesis: weight;
+  font-size: clamp(36px, 6vw, 80px);
+  color: white;
+  margin: 0 0 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 0;
+  line-height: 1.2;
+}
+
+.beta-insights-title span {
+  display: block;
+  line-height: 0.9;
+}
+
+.beta-insights-title span + span {
+  margin-top: -0.18em;
+}
+
+.beta-insights-slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.beta-insights-track {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 0 40px 0;
+  scroll-snap-type: x mandatory;
+  
+  /* 隐藏滚动条但保持功能 */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.beta-insights-track::-webkit-scrollbar {
+  display: none;
+}
+
+.beta-insight-card {
+  flex: 0 0 auto;
+  min-width: 300px;
+  max-width: 500px;
+  height: auto;
+  min-height: 200px;
+  border-radius: 41px;
+  padding: 4px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 39%, rgba(255, 255, 255, 1) 100%);
+  position: relative;
+  scroll-snap-align: start;
+}
+
+.beta-insight-card::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 37px;
+  z-index: 1;
+}
+
+.beta-insight-content {
+  position: relative;
+  z-index: 2;
+  padding: 32px;
+  margin: 4px;
+  border-radius: 37px;
+}
+
+.beta-insight-text {
+  font-family: 'Neue Machina', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 滑动按钮 */
+.insights-slider-nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.insights-slider-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.insights-slider-btn:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.insights-slider-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 响应式设计 */
+@media (min-width: 1024px) {
+  .beta-insights-title { 
+    padding-left: 0px; 
+  }
+}
+
+@media (max-width: 900px) {
+  .beta-insights-section {
+    padding: 0 20px;
+    margin: 80px 0;
+  }
+
+  .beta-insights-title { 
+    
+    font-size: clamp(28px, 7vw, 52px) !important;
+    color: white !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 999 !important;
+    margin: 0 0 80px -5% !important;
+    font-family: 'Neue Machina Regular', 'Neue Machina', system-ui, -apple-system, sans-serif !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+  }
+
+  .beta-insights-title span {
+    display: block !important;
+    line-height: 0.9 !important;
+    color: white !important;
+    font-size: inherit !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .beta-insights-title span + span {
+    margin-top: -0.18em !important;
+  }
+
+  .beta-insight-card {
+    flex: 0 0 auto;
+    min-width: 280px;
+    max-width: 400px;
+    height: auto;
+    min-height: 150px;
+    border: 2px solid #fff;
+    background: rgba(0, 0, 0, 0.8) !important;
+    padding: 0;
+  }
+
+  .beta-insight-card::before {
+    display: none;
+  }
+
+  .beta-insights-track {
+    gap: 20px;
+  }
+
+  .beta-insight-content {
+    padding: 20px;
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .beta-insight-card {
+    min-width: 250px;
+    max-width: 320px;
+  }
+
+  .beta-insights-track {
+    gap: 16px;
+  }
+
+  .beta-insight-content {
+    padding: 16px;
+  }
+}
+
+/* Trend CTA Section */
+.trend-cta-section {
+  margin: 140px 0 100px 0;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.trend-cta-title {
+  font-family: 'Neue Machina Regular', 'Neue Machina', system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  font-synthesis: weight;
+  font-size: clamp(36px, 6vw, 80px);
+  color: white;
+  margin: 0 0 60px 0;
+  line-height: 1.05;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trend-cta-title span { display: block; line-height: 0.95; }
+.trend-cta-title span + span { margin-top: -0.18em; }
+
+.trend-cta-actions { margin-top: 20px; }
+
+@media (max-width: 900px) {
+  .trend-cta-section { padding: 0 20px; margin: 100px 0 160px 0; }
+  .trend-cta-title { font-size: clamp(28px, 7vw, 52px); }
 }
 
 @media (min-width: 1400px) {

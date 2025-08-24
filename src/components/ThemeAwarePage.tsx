@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { useTheme } from '@/context/ThemeContext';
 import Hero from '@/components/Hero';
 import FAQ from '@/components/FAQ';
@@ -14,6 +14,7 @@ interface ThemeAwarePageProps {
 export default function ThemeAwarePage({ initialTheme }: ThemeAwarePageProps) {
   const searchParams = useSearchParams();
   const { setTheme, themeId } = useTheme();
+  const pathname = usePathname();
 
   useEffect(() => {
     // 优先使用路径参数传入的主题
@@ -33,7 +34,7 @@ export default function ThemeAwarePage({ initialTheme }: ThemeAwarePageProps) {
     <div className="min-h-screen">
       {/* <ThemeSwitcher /> */}
       <Hero />
-      <FAQ />
+      {pathname !== '/' && <FAQ />}
       <Footer />
     </div>
   );
